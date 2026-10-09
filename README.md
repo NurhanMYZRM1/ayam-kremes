@@ -13,6 +13,8 @@ npm run dev
 
 Open the Local URL printed by Vite, normally **http://127.0.0.1:5173/**. Navigation uses normal section anchors: `#menu`, `#branches`, and `#the-crunch`.
 
+The Indonesian table design preview is on branch `codex/indonesian-table`. Run `npm run dev -- --port 5176 --strictPort` to reproduce the review preview. Its [design notes](docs/indonesian-refresh.md) cover the Mobbin references and connected visitor journey.
+
 ## Build and verify
 
 ```sh
@@ -30,7 +32,7 @@ The browser suite uses installed Google Chrome on macOS when available. Otherwis
 npx playwright install chromium
 ```
 
-For a custom browser installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Tests start their own dev server unless port 5173 is already in use, in which case they reuse whatever is serving there, even if it belongs to another checkout. Set `PLAYWRIGHT_PORT` to an unused port to test this tree. Screenshots are saved under ignored `test-results/`.
+For a custom browser installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Tests own a separate dev server on port 5177 by default and fail if that port is occupied, so they cannot silently test another checkout. Override it with `PLAYWRIGHT_PORT=5187 npm run test:e2e`. Screenshots are saved under ignored `test-results/`.
 
 Format editable project files with `npm run format`.
 
@@ -46,14 +48,14 @@ Format editable project files with `npm run format`.
 | Colours, typography, shared layout                      | `src/styles.css`                   |
 | Source evidence and unresolved facts                    | `docs/content-sources.md`          |
 
-The supplied PDF prints prices without a currency and has 2023 creation metadata. The site preserves the printed values and asks visitors to check current prices with a branch. Confirm currency, current prices, and inclusions before a public launch.
+The supplied PDF prints prices without a currency and has 2023 creation metadata. The site preserves the printed values and asks visitors to check current prices with a branch. Currency, current prices, and inclusions still need restaurant confirmation.
 
 ## Continue with Claude Code
 
 Start with [the implementation handoff](docs/CLAUDE-HANDOFF.md). `CLAUDE.md` also points to the relevant files and checks. The public repository contains the standard source code and local assets; no proprietary runtime is required.
 
-## Hosting later
+## Hosting
 
-The intended destination is Cloudflare with `ayamkremes.com`. This release has **not been deployed**, and no DNS records have been changed. It produces a static `dist/` directory with `npm run build`; a future hosting setup can serve that directory. All current routes are same-page anchors, so no server routing layer is needed.
+The baseline site is deployed at `https://ayamkremes.com` through Cloudflare Workers static assets. `wrangler.jsonc` serves `dist/`, pins the owning account, and disables `workers.dev`. The `www` hostname is not configured. `npm run deploy` builds and publishes to the production domain, and requires an authenticated Wrangler session. The Indonesian table refresh is a local review version and has not been deployed. All current routes are same-page anchors, so no server routing layer is needed.
 
 Restaurant photographs, logo, and menu remain attributed to their original sources. Public repository visibility does not grant a separate license to those assets.

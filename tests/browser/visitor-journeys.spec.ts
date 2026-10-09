@@ -70,6 +70,69 @@ test('mobile navigation supports keyboard, Escape, and branch journey', async ({
   ).toBeVisible();
 });
 
+test('the menu ends with a hand-off to the branches', async ({ page }) => {
+  await page.goto('/#menu');
+  const note = page.locator('.menu-bottom-note');
+  await note.scrollIntoViewIfNeeded();
+  await note.getByRole('link', { name: 'Find a branch' }).click();
+  await expect(page).toHaveURL(/#branches$/);
+  await expect(
+    page.getByRole('heading', { name: 'Your table is waiting.' }),
+  ).toBeInViewport();
+  await page.reload();
+  await expect(
+    page.getByRole('heading', { name: 'Your table is waiting.' }),
+  ).toBeInViewport();
+  await page.goto('/#sambal');
+  await expect(
+    page.getByRole('heading', { name: 'Say it with sambal.' }),
+  ).toBeInViewport();
+});
+
+test('the homepage uses no decorative asterisk glyphs', async ({ page }) => {
+  // U+2733 renders as a green emoji square on macOS, which looked like an
+  // inert button in the hero.
+  await page.goto('/');
+  expect(await page.locator('body').innerText()).not.toContain('✳');
+});
+
+test('the meal journey connects sambal, menu, and branches with current navigation', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await page
+    .getByRole('navigation', { name: 'Explore the Sarang table' })
+    .getByRole('link', { name: /Meet your sambal/ })
+    .click();
+  await expect(page).toHaveURL(/#sambal$/);
+  await expect(
+    page.getByRole('heading', { name: 'Say it with sambal.' }),
+  ).toBeInViewport();
+  const mainNav = page.getByRole('navigation', { name: 'Main navigation' });
+  await page.locator('.nav-toggle').click();
+  await expect(
+    mainNav.getByRole('link', { name: 'Kremes & sambal' }),
+  ).toHaveAttribute('aria-current', 'location');
+  await page.keyboard.press('Escape');
+  await page
+    .getByRole('link', { name: 'Browse all dishes', exact: true })
+    .click();
+  await expect(page).toHaveURL(/#menu$/);
+  await expect(
+    page.getByRole('heading', { name: 'Choose your next plate.' }),
+  ).toBeInViewport();
+  await page
+    .locator('.menu-bottom-note')
+    .getByRole('link', { name: 'Find a branch' })
+    .click();
+  await expect(page).toHaveURL(/#branches$/);
+  await expect(
+    page.getByRole('heading', { name: 'Your table is waiting.' }),
+  ).toBeInViewport();
+});
+
 test('featured dishes open the right category and sticky category changes reset the list position', async ({
   page,
 }) => {

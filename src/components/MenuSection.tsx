@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react';
-import { ArrowDownToLine, ArrowUpRight } from 'lucide-react';
+import { ArrowDownToLine, ArrowRight, ArrowUpRight } from 'lucide-react';
 import type { MenuCategory, MenuItem } from '../types';
 import './menu-branches.css';
 
@@ -83,10 +83,15 @@ export function MenuSection({
       <div className="container">
         <div className="menu-section-heading">
           <div>
-            <p className="eyebrow">At the Sarang table</p>
+            <p className="eyebrow">The menu</p>
             <h2 id="menu-title" className="section-title">
-              Find your next favourite.
+              Choose your next plate.
             </h2>
+            <p className="menu-introduction">
+              Start with golden kremes, explore the bakar dishes, or settle in
+              with a bowl of soup. There’s a place for every appetite at the
+              table.
+            </p>
           </div>
           <a className="text-link menu-download" href={menuPdf} download>
             Download the menu <span className="download-size">PDF · 25 MB</span>
@@ -174,14 +179,20 @@ export function MenuSection({
             Please check with your branch for current prices and whether rice
             and sides are included.
           </p>
-          <a
-            href={menuPdf}
-            target="_blank"
-            rel="noreferrer"
-            className="text-link"
-          >
-            View the original menu <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
+          <div className="menu-bottom-actions">
+            <a className="button button-primary" href="#branches">
+              Find a branch <ArrowRight size={19} aria-hidden="true" />
+            </a>
+            <a
+              href={menuPdf}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link"
+            >
+              View the original menu{' '}
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </div>
     </section>

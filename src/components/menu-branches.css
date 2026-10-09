@@ -1,12 +1,12 @@
 .menu-section,
 .branches-section {
   padding-block: clamp(64px, 8vw, 112px);
-  scroll-margin-top: 100px;
 }
 
 .menu-section {
   color: var(--ink);
   background: var(--cream);
+  border-top: 1px solid var(--line);
 }
 
 .menu-section-heading {
@@ -22,6 +22,19 @@
   margin-bottom: 0;
 }
 
+.menu-section-heading .eyebrow,
+.branches-heading .eyebrow {
+  margin-bottom: 14px;
+}
+
+.menu-introduction {
+  max-width: 610px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 20px 0 0;
+}
+
 .menu-download {
   flex-shrink: 0;
   min-height: 44px;
@@ -32,26 +45,31 @@
 }
 
 .menu-category-nav {
+  position: sticky;
+  top: var(--header-height, 88px);
+  z-index: 10;
   display: flex;
-  gap: clamp(6px, 1.1vw, 18px);
+  gap: clamp(6px, 1.1vw, 16px);
   max-width: 100%;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   border-bottom: 1px solid var(--line);
-  padding: 4px 3px 12px;
+  background: var(--cream);
+  padding: 10px 4px 7px;
   scrollbar-width: thin;
   scrollbar-color: var(--line) transparent;
 }
 
 .menu-category-button {
+  position: relative;
   border: 1px solid transparent;
   background: transparent;
   color: var(--muted);
   flex-shrink: 0;
   font: 600 15px/1.4 var(--sans);
-  padding: 12px 21px;
-  min-height: 46px;
-  border-radius: 100px;
+  padding: 12px 19px 15px;
+  min-height: 52px;
+  border-radius: 2px;
   cursor: pointer;
   transition:
     color 160ms ease,
@@ -59,13 +77,22 @@
 }
 
 .menu-category-button:hover {
-  background: #e9eade;
+  background: #eae7db;
   color: var(--forest);
 }
 
 .menu-category-button.is-active {
+  background: #e7e9df;
+  color: var(--forest);
+}
+
+.menu-category-button.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  inset-inline: 19px;
+  height: 2px;
   background: var(--forest);
-  color: var(--cream);
 }
 
 .menu-category-content {
@@ -102,10 +129,15 @@
 
 .menu-photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 24px;
   row-gap: 36px;
   margin-bottom: 32px;
+}
+
+.menu-photo-grid[data-count='2'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 880px;
 }
 
 .menu-photo-item,
@@ -115,8 +147,8 @@
 
 .menu-photo-frame {
   overflow: hidden;
-  background: #e8e8d9;
-  border-radius: 5px;
+  background: #e6dfd0;
+  border-radius: 2px;
   aspect-ratio: 4 / 3;
   margin-bottom: 19px;
 }
@@ -136,7 +168,7 @@
 }
 
 .menu-item-heading h4 {
-  font: 600 19px/1.35 var(--sans);
+  font: 500 22px/1.3 var(--serif);
   margin: 0;
   overflow-wrap: anywhere;
 }
@@ -201,10 +233,20 @@
 .menu-bottom-note p {
   color: var(--muted);
   font-size: 12px;
+  line-height: 1.7;
   margin: 0;
+  flex: 1 1 320px;
+  max-width: 560px;
 }
 
-.menu-bottom-note a {
+.menu-bottom-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+}
+
+.menu-bottom-note .text-link {
   font-size: 13px;
   min-height: 44px;
   display: inline-flex;
@@ -214,7 +256,7 @@
 
 .branches-section {
   color: var(--forest);
-  background: #e9eddf;
+  background: #ece5d6;
 }
 
 .branches-heading {
@@ -226,6 +268,7 @@
   font-size: 17px;
   line-height: 1.6;
   color: var(--muted);
+  max-width: 590px;
 }
 
 .branch {
@@ -233,12 +276,12 @@
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.35fr) auto;
   column-gap: 36px;
   align-items: start;
-  border-top: 1px solid #c5ceba;
+  border-top: 1px solid #cfc7b8;
   padding-block: 32px;
 }
 
 .branch:last-child {
-  border-bottom: 1px solid #c5ceba;
+  border-bottom: 1px solid #cfc7b8;
 }
 
 .branch-name {
@@ -320,8 +363,8 @@
   align-items: center;
   gap: 24px;
   padding-block: 30px;
-  border-top: 1px solid #c5ceba;
-  border-bottom: 1px solid #c5ceba;
+  border-top: 1px solid #cfc7b8;
+  border-bottom: 1px solid #cfc7b8;
 }
 
 .branch-fallback > svg {
@@ -386,7 +429,11 @@
 
   .menu-category-button {
     font-size: 14px;
-    padding-inline: 18px;
+    padding-inline: 16px;
+  }
+
+  .menu-category-button.is-active::after {
+    inset-inline: 16px;
   }
 
   .menu-category-content {
@@ -399,6 +446,7 @@
   }
 
   .menu-photo-grid,
+  .menu-photo-grid[data-count='2'],
   .menu-text-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -409,7 +457,7 @@
   }
 
   .menu-item-heading h4 {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .menu-text-item {
@@ -420,6 +468,14 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 4px;
+  }
+
+  .menu-bottom-note p {
+    flex: none;
+  }
+
+  .menu-bottom-actions {
+    margin-top: 12px;
   }
 
   .branch {

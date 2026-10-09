@@ -24,11 +24,14 @@ export function BranchesSection({ branches }: { branches: Branch[] }) {
     >
       <div className="container">
         <div className="branches-heading">
-          <p className="eyebrow">Come hungry. Leave happy.</p>
+          <p className="eyebrow">Come to the table</p>
           <h2 id="branches-title" className="section-title">
             Your table is waiting.
           </h2>
-          <p>Find your nearest Sarang and make a meal of it.</p>
+          <p>
+            Found a favourite? Find your nearest Sarang, check the opening
+            hours, and come share a meal.
+          </p>
         </div>
 
         {branches.length > 0 ? (

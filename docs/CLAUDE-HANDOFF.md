@@ -2,6 +2,8 @@
 
 First local release prepared on **9 October 2026**, Asia/Kuala_Lumpur.
 
+The baseline has since been deployed to Cloudflare Workers at `ayamkremes.com`. The **10 October 2026 Indonesian table refresh** is an isolated local review branch, `codex/indonesian-table`, described in [indonesian-refresh.md](indonesian-refresh.md). Preview that branch on port 5176. The original release notes below retain the content and architecture context.
+
 ## What exists
 
 A complete English restaurant website using original dish names: editorial homepage, three featured dishes, kremes introduction, five verified sambals, a browsable seven-category menu containing 39 items, two branch listings, a small photo gallery, Instagram link, menu PDF, and contact/navigation footer. No payment, account, reservation, ordering, CMS, or loyalty system is implemented.
@@ -62,7 +64,7 @@ npm run format:check
 npm run build
 ```
 
-Browser screenshots are produced under `test-results/` and are not committed. The suite uses installed Chrome on macOS or Playwright Chromium elsewhere; see the README for browser setup. Automated accessibility checks supplement visual and keyboard review; they are not a full assistive-technology audit.
+Browser screenshots are produced under `test-results/` and are not committed. The suite uses installed Chrome on macOS or Playwright Chromium elsewhere; see the README for browser setup. Tests own a server on 5177 by default; use `PLAYWRIGHT_PORT` to select another free port. They never reuse another checkout's server. Automated accessibility checks supplement visual and keyboard review; they are not a full assistive-technology audit.
 
 ## Outstanding restaurant information
 
@@ -74,7 +76,7 @@ Browser screenshots are produced under `test-results/` and are not committed. Th
 
 ## Prioritised roadmap
 
-1. **Launch readiness:** resolve current menu facts, confirm branch pins, obtain final copy/assets, configure Cloudflare and `ayamkremes.com`, then add production canonical/social metadata and verify the live site. Deployment and DNS changes were explicitly out of scope here.
+1. **Production follow-up:** resolve current menu facts, confirm branch pins, obtain final copy/assets, and add production canonical/social metadata. Cloudflare Workers hosting and the apex domain are configured; `www` remains unconfigured. `npm run deploy` builds and publishes through the pinned account in `wrangler.jsonc`, with `workers.dev` disabled. This design refresh has not been published.
 2. **Content reach:** add approved Bahasa Melayu content, prerender/static HTML for stronger search and no-JavaScript access, branch-specific pages if useful, and opt-in privacy-conscious analytics if requested.
 3. **Editorial workflow:** introduce a small CMS only when staff need frequent independent menu/branch updates; retain the current schema and source-confirmation discipline.
 4. **Confirmed services:** integrate verified delivery/reservation links before considering a custom system.
