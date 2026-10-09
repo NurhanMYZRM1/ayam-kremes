@@ -7,3 +7,5 @@ dist/
 *.tsbuildinfo
 test-results/
 .playwright/
+.wrangler/
+.dev.vars*
