@@ -239,15 +239,7 @@ button {
 }
 .hero-copy .eyebrow {
   font-size: 10px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
   margin-bottom: 23px;
-}
-.tiny-spark {
-  color: var(--orange);
-  font-size: 24px;
-  line-height: 1;
 }
 .hero h1 {
   font: 500 clamp(48px, 5.2vw, 76px)/1.055 var(--serif);
@@ -355,8 +347,6 @@ button {
 .table-strip {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: 28px;
   padding: 20px 35px;
   background: #e9ecdf;
   border-block: 1px solid #dfe3d3;
@@ -366,10 +356,12 @@ button {
   white-space: nowrap;
   overflow: hidden;
 }
-.table-strip span:nth-child(even) {
-  font-size: 20px;
-  color: var(--orange);
-  line-height: 1;
+.table-strip span {
+  flex: 1;
+  text-align: center;
+}
+.table-strip span + span {
+  border-left: 1px solid #cfd5c1;
 }
 .featured-grid {
   display: grid;
@@ -496,15 +488,6 @@ button {
 .crunch-copy .text-link:hover {
   color: #ffc4a5;
 }
-.crunch-flower {
-  position: absolute;
-  right: 0;
-  top: 14%;
-  font-size: 63px;
-  line-height: 1;
-  color: #eea477;
-  transform: rotate(15deg);
-}
 .sambal-section {
   display: grid;
   grid-template-columns: 1.1fr 1.3fr;
@@ -526,7 +509,7 @@ button {
 }
 .sambal-item {
   display: grid;
-  grid-template-columns: 27px 1fr 24px;
+  grid-template-columns: 27px 1fr;
   gap: 15px;
   align-items: center;
   border-bottom: 1px solid var(--line);
@@ -549,12 +532,6 @@ button {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.6;
-}
-.sambal-spark {
-  grid-column: 3;
-  grid-row: 1;
-  color: var(--orange);
-  font-size: 21px;
 }
 .social-gallery {
   display: grid;
@@ -815,14 +792,11 @@ button {
     display: none;
   }
   .table-strip {
-    padding: 17px 22px;
-    justify-content: flex-start;
-    gap: 26px;
+    padding: 17px 12px;
     font-size: 9px;
     letter-spacing: 1.4px;
   }
-  .table-strip span:nth-child(7),
-  .table-strip span:nth-child(8) {
+  .table-strip span:nth-child(4) {
     display: none;
   }
   .section-space {
@@ -891,11 +865,6 @@ button {
     font-size: 15px;
     max-width: 100%;
     margin-top: 20px;
-  }
-  .crunch-flower {
-    top: 44px;
-    right: 6px;
-    font-size: 59px;
   }
   .sambal-section {
     grid-template-columns: 1fr;

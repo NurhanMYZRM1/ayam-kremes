@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ayam-kremes",
+  "account_id": "636b468ba739e81c9a875f1c56f5d7bb",
+  "compatibility_date": "2026-10-06",
+  "assets": {
+    "directory": "./dist",
+  },
+  "routes": [{ "pattern": "ayamkremes.com", "custom_domain": true }],
+  "workers_dev": false,
+}
