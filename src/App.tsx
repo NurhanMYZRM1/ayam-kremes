@@ -114,12 +114,7 @@ export function App() {
           aria-labelledby="hero-title"
         >
           <div className="hero-copy">
-            <p className="eyebrow">
-              <span className="tiny-spark" aria-hidden="true">
-                ✳
-              </span>{' '}
-              Welcome to the Sarang table
-            </p>
+            <p className="eyebrow">Welcome to the Sarang table</p>
             <h1 id="hero-title">
               A little <em>crunch.</em>
               <br />A lot of comfort.
@@ -169,13 +164,9 @@ export function App() {
 
         <div className="table-strip" aria-hidden="true">
           <span>CRISPY KREMES</span>
-          <span>✳</span>
           <span>BOLD SAMBAL</span>
-          <span>✳</span>
           <span>GOOD COMPANY</span>
-          <span>✳</span>
           <span>THE SARANG TABLE</span>
-          <span>✳</span>
         </div>
 
         {featured.length > 0 && (
@@ -275,9 +266,6 @@ export function App() {
               <a className="text-link" href="#menu">
                 Find your favourite combination <ArrowUpRight size={19} />
               </a>
-              <span className="crunch-flower" aria-hidden="true">
-                ✳
-              </span>
             </div>
           </div>
         </section>
@@ -308,9 +296,6 @@ export function App() {
                   <span className="sambal-index">0{index + 1}</span>
                   <h3>{sambal.name}</h3>
                   {sambal.description && <p>{sambal.description}</p>}
-                  <span className="sambal-spark" aria-hidden="true">
-                    ✳
-                  </span>
                 </div>
               ))}
             </div>
