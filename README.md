@@ -30,7 +30,7 @@ The browser suite uses installed Google Chrome on macOS when available. Otherwis
 npx playwright install chromium
 ```
 
-For a custom browser installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Tests start their own dev server unless port 5173 already serves the project. Screenshots are saved under ignored `test-results/`.
+For a custom browser installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Tests start their own dev server unless port 5173 is already in use, in which case they reuse whatever is serving there, even if it belongs to another checkout. Set `PLAYWRIGHT_PORT` to an unused port to test this tree. Screenshots are saved under ignored `test-results/`.
 
 Format editable project files with `npm run format`.
 
