@@ -1,9 +1,12 @@
 import { useLayoutEffect, useRef } from 'react';
 import { ArrowDownToLine, ArrowRight, ArrowUpRight } from 'lucide-react';
 import type { MenuCategory, MenuItem } from '../types';
+import { useLocale } from '../i18n/LocaleContext';
+import { formatMessage } from '../i18n/format';
 import './menu-branches.css';
 
 function ItemDetails({ item }: { item: MenuItem }) {
+  const { t } = useLocale();
   return (
     <div className="menu-item-details">
       <div className="menu-item-heading">
@@ -14,7 +17,10 @@ function ItemDetails({ item }: { item: MenuItem }) {
         <p className="menu-item-description">{item.description}</p>
       )}
       {item.variants && item.variants.length > 0 && (
-        <ul className="menu-item-variants" aria-label={`${item.name} options`}>
+        <ul
+          className="menu-item-variants"
+          aria-label={formatMessage(t.itemOptions, { name: item.name })}
+        >
           {item.variants.map((variant) => (
             <li key={variant.name}>
               <span>{variant.name}</span>
@@ -40,6 +46,7 @@ export function MenuSection({
   selectedId: string;
   onCategoryChange: (id: string) => void;
 }) {
+  const { t } = useLocale();
   const contentRef = useRef<HTMLDivElement>(null);
   const categoryNavRef = useRef<HTMLDivElement>(null);
   const restorePosition = useRef(false);
@@ -83,18 +90,14 @@ export function MenuSection({
       <div className="container">
         <div className="menu-section-heading">
           <div>
-            <p className="eyebrow">The menu</p>
+            <p className="eyebrow">{t.menuEyebrow}</p>
             <h2 id="menu-title" className="section-title">
-              Choose your next plate.
+              {t.menuTitle}
             </h2>
-            <p className="menu-introduction">
-              Start with golden kremes, explore the bakar dishes, or settle in
-              with a bowl of soup. There’s a place for every appetite at the
-              table.
-            </p>
+            <p className="menu-introduction">{t.menuIntroduction}</p>
           </div>
           <a className="text-link menu-download" href={menuPdf} download>
-            Download the menu <span className="download-size">PDF · 25 MB</span>
+            {t.downloadMenu} <span className="download-size">{t.pdfSize}</span>
             <ArrowDownToLine size={17} aria-hidden="true" />
           </a>
         </div>
@@ -103,7 +106,7 @@ export function MenuSection({
           ref={categoryNavRef}
           className="menu-category-nav"
           role="group"
-          aria-label="Browse menu categories"
+          aria-label={t.browseCategories}
         >
           {categories.map((category) => (
             <button
@@ -134,7 +137,7 @@ export function MenuSection({
               <span className="menu-item-count" aria-live="polite">
                 <span className="sr-only">{selected.name}: </span>
                 {selected.items.length}{' '}
-                {selected.items.length === 1 ? 'dish' : 'choices'}
+                {selected.items.length === 1 ? t.oneDish : t.choices}
               </span>
             </div>
 
@@ -174,14 +177,10 @@ export function MenuSection({
         )}
 
         <div className="menu-bottom-note">
-          <p>
-            Prices follow the printed menu, which does not specify a currency.
-            Please check with your branch for current prices and whether rice
-            and sides are included.
-          </p>
+          <p>{t.priceNote}</p>
           <div className="menu-bottom-actions">
             <a className="button button-primary" href="#branches">
-              Find a branch <ArrowRight size={19} aria-hidden="true" />
+              {t.findBranch} <ArrowRight size={19} aria-hidden="true" />
             </a>
             <a
               href={menuPdf}
@@ -189,8 +188,7 @@ export function MenuSection({
               rel="noreferrer"
               className="text-link"
             >
-              View the original menu{' '}
-              <ArrowUpRight size={16} aria-hidden="true" />
+              {t.viewOriginalMenu} <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </div>
         </div>

@@ -13,24 +13,19 @@ import { telephoneUrl } from './lib/links';
 import type { RestaurantContent } from './types';
 import { MenuSection } from './components/MenuSection';
 import { BranchesSection } from './components/BranchesSection';
+import { useLocale } from './i18n/LocaleContext';
+import { formatMessage } from './i18n/format';
+import { localizeImageAlt, localizeRestaurant } from './i18n/content';
 
 const content: RestaurantContent = restaurantData;
-const featured = content.categories
-  .flatMap((category) => category.items)
-  .filter((item) => item.featured)
-  .slice(0, 3);
-const navSections = [
-  { id: 'menu', label: 'Our menu' },
-  { id: 'the-crunch', label: 'Kremes & sambal' },
-  { id: 'branches', label: 'Find a branch' },
-];
 
 function Brand({ footer = false }: { footer?: boolean }) {
+  const { t } = useLocale();
   return (
     <a
       className={`brand${footer ? ' brand-footer' : ''}`}
       href="#home"
-      aria-label="Ayam Kremes by Sarang home"
+      aria-label={formatMessage(t.homeLabel, { name: content.brand.name })}
     >
       <img
         className="brand-logo"
@@ -49,7 +44,40 @@ function Brand({ footer = false }: { footer?: boolean }) {
   );
 }
 
+function LanguageSwitch() {
+  const { locale, setLocale, t } = useLocale();
+  return (
+    <div className="language-switch" role="group" aria-label={t.languagePicker}>
+      <button
+        type="button"
+        aria-label={t.chooseEnglish}
+        aria-pressed={locale === 'en'}
+        onClick={() => setLocale('en')}
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        aria-label={t.chooseMalay}
+        aria-pressed={locale === 'ms'}
+        onClick={() => setLocale('ms')}
+      >
+        BM
+      </button>
+      <span className="sr-only" role="status">
+        {locale === 'ms' ? 'Bahasa Melayu' : 'English'}
+      </span>
+    </div>
+  );
+}
+
 function Navigation() {
+  const { t } = useLocale();
+  const navSections = [
+    { id: 'menu', label: t.ourMenu },
+    { id: 'the-crunch', label: t.kremesAndSambal },
+    { id: 'branches', label: t.findBranch },
+  ];
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('home');
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -96,40 +124,43 @@ function Navigation() {
     <header className="site-header">
       <div className="container header-inner">
         <Brand />
-        <button
-          ref={toggleRef}
-          className="nav-toggle"
-          type="button"
-          onClick={() => setOpen(!open)}
-          aria-expanded={open}
-          aria-controls="main-navigation"
-          aria-label={open ? 'Close navigation' : 'Open navigation'}
-        >
-          {open ? <X size={25} /> : <Menu size={25} />}
-        </button>
-        <nav
-          id="main-navigation"
-          className={`main-navigation${open ? ' is-open' : ''}`}
-          aria-label="Main navigation"
-        >
-          {navSections.map((section) => (
-            <a
-              key={section.id}
-              className={section.id === 'branches' ? 'nav-branch' : undefined}
-              href={`#${section.id}`}
-              aria-current={active === section.id ? 'location' : undefined}
-              onClick={() => setOpen(false)}
-            >
-              {section.id === 'branches' && (
-                <MapPin size={16} aria-hidden="true" />
-              )}
-              {section.label}
-              {section.id === 'branches' && (
-                <ArrowUpRight size={16} aria-hidden="true" />
-              )}
-            </a>
-          ))}
-        </nav>
+        <div className="header-controls">
+          <button
+            ref={toggleRef}
+            className="nav-toggle"
+            type="button"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-controls="main-navigation"
+            aria-label={open ? t.closeNavigation : t.openNavigation}
+          >
+            {open ? <X size={25} /> : <Menu size={25} />}
+          </button>
+          <nav
+            id="main-navigation"
+            className={`main-navigation${open ? ' is-open' : ''}`}
+            aria-label={t.mainNavigation}
+          >
+            {navSections.map((section) => (
+              <a
+                key={section.id}
+                className={section.id === 'branches' ? 'nav-branch' : undefined}
+                href={`#${section.id}`}
+                aria-current={active === section.id ? 'location' : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {section.id === 'branches' && (
+                  <MapPin size={16} aria-hidden="true" />
+                )}
+                {section.label}
+                {section.id === 'branches' && (
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                )}
+              </a>
+            ))}
+          </nav>
+          <LanguageSwitch />
+        </div>
       </div>
     </header>
   );
@@ -140,6 +171,12 @@ function WovenRule() {
 }
 
 export function App() {
+  const { locale, t } = useLocale();
+  const displayContent = localizeRestaurant(content, locale);
+  const featured = displayContent.categories
+    .flatMap((category) => category.items)
+    .filter((item) => item.featured)
+    .slice(0, 3);
   const { hero, story, gallery, sambal } = homeImages;
   const [menuCategory, setMenuCategory] = useState('kremes');
   useEffect(() => {
@@ -148,6 +185,15 @@ export function App() {
     const target = document.getElementById(hash);
     if (!target) return;
     let cancelled = false;
+    const cancelOnInteraction = () => {
+      cancelled = true;
+    };
+    window.addEventListener('pointerdown', cancelOnInteraction, { once: true });
+    window.addEventListener('keydown', cancelOnInteraction, { once: true });
+    window.addEventListener('wheel', cancelOnInteraction, {
+      once: true,
+      passive: true,
+    });
     void document.fonts.ready.then(() => {
       if (!cancelled && window.location.hash.slice(1) === hash) {
         target.scrollIntoView({ block: 'start', behavior: 'instant' });
@@ -155,12 +201,15 @@ export function App() {
     });
     return () => {
       cancelled = true;
+      window.removeEventListener('pointerdown', cancelOnInteraction);
+      window.removeEventListener('keydown', cancelOnInteraction);
+      window.removeEventListener('wheel', cancelOnInteraction);
     };
   }, []);
   return (
     <>
       <a className="skip-link" href="#main">
-        Skip to content
+        {t.skipToContent}
       </a>
       <Navigation />
       <main id="main">
@@ -171,63 +220,68 @@ export function App() {
         >
           <div className="hero-copy">
             <p className="eyebrow">
-              <span lang="id">Selamat datang</span>
-              <span className="eyebrow-divider" aria-hidden="true" /> Welcome to
-              Sarang
+              {locale === 'en' && (
+                <>
+                  <span lang="id">Selamat datang</span>
+                  <span className="eyebrow-divider" aria-hidden="true" />
+                </>
+              )}
+              {t.welcome}
             </p>
             <h1 id="hero-title">
-              A little crunch.
-              <br />A taste of <em>Indonesia.</em>
+              {t.heroTitleFirst}
+              <br />
+              {t.heroTitleSecond} <em>{t.heroTitleAccent}</em>
             </h1>
-            <p className="hero-description">
-              Golden kremes, grilled favourites, and bold sambal. Find your
-              favourite, then join us at the Sarang table.
-            </p>
+            <p className="hero-description">{t.heroDescription}</p>
             <div className="hero-actions">
               <a className="button button-primary" href="#menu">
-                Explore the menu <ArrowUpRight size={20} aria-hidden="true" />
+                {t.exploreMenu} <ArrowUpRight size={20} aria-hidden="true" />
               </a>
               <a className="hero-secondary" href="#branches">
-                Find a branch <ArrowRight size={18} aria-hidden="true" />
+                {t.findBranch} <ArrowRight size={18} aria-hidden="true" />
               </a>
             </div>
             <p className="hero-footnote">
-              Kremes. Bakar. Sambal.<span>Good food, better together.</span>
+              Kremes. Bakar. Sambal.<span>{t.togetherNote}</span>
             </p>
           </div>
           <div className="hero-visual">
             <img
               className="hero-image"
               src={hero.path}
-              alt={hero.alt}
+              alt={localizeImageAlt(hero.path, hero.alt, locale)}
               fetchPriority="high"
               width="1600"
               height="1067"
             />
             <div className="photo-caption">
               <span>Ayam Kremes</span>
-              <span>At the Sarang table</span>
+              <span>{t.tableCaption}</span>
             </div>
           </div>
-          <nav className="meal-journey" aria-label="Explore the Sarang table">
+          <nav className="meal-journey" aria-label={t.journeyNavigation}>
             <a href="#featured">
               <span className="journey-number">01</span>
               <span>
-                Choose your dish<small>Start with a few favourites</small>
+                {t.chooseDish}
+                <small>{t.chooseDishNote}</small>
               </span>
               <ArrowRight size={18} aria-hidden="true" />
             </a>
             <a href="#sambal">
               <span className="journey-number">02</span>
               <span>
-                Meet your sambal<small>A little extra character</small>
+                {t.meetSambal}
+                <small>{t.meetSambalNote}</small>
               </span>
               <ArrowRight size={18} aria-hidden="true" />
             </a>
             <a href="#branches">
               <span className="journey-number">03</span>
               <span>
-                Come to the table<small>Find your nearest Sarang</small>
+                {t.comeToTable}
+                <small>{t.comeToTableNote}</small>
               </span>
               <ArrowRight size={18} aria-hidden="true" />
             </a>
@@ -241,14 +295,13 @@ export function App() {
         >
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Featured from our menu</p>
+              <p className="eyebrow">{t.featuredEyebrow}</p>
               <h2 className="section-title" id="featured-title">
-                Kremes, bakar &<br className="mobile-break" /> your next
-                favourite.
+                {t.featuredTitle}
               </h2>
             </div>
             <a className="text-link" href="#menu">
-              See the full menu <ArrowUpRight size={18} aria-hidden="true" />
+              {t.seeFullMenu} <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
           <div className="featured-grid">
@@ -265,7 +318,9 @@ export function App() {
                         )?.id ?? 'kremes',
                       )
                     }
-                    aria-label={`Explore ${item.name} on our menu`}
+                    aria-label={formatMessage(t.exploreDish, {
+                      name: item.name,
+                    })}
                   >
                     <img
                       src={item.image}
@@ -291,12 +346,12 @@ export function App() {
           </div>
           <div className="section-handoff">
             <p>
-              The dish is only the beginning.
+              {t.featuredBridge}
               <br />
-              <span>Now for the crunch and sambal.</span>
+              <span>{t.featuredBridgeNote}</span>
             </p>
             <a className="text-link" href="#the-crunch">
-              Make it your own <ArrowRight size={18} aria-hidden="true" />
+              {t.makeItYourOwn} <ArrowRight size={18} aria-hidden="true" />
             </a>
           </div>
         </section>
@@ -312,34 +367,24 @@ export function App() {
               <div className="crunch-photo">
                 <img
                   src={story.path}
-                  alt={story.alt}
+                  alt={localizeImageAlt(story.path, story.alt, locale)}
                   width="640"
                   height="960"
                   loading="lazy"
                 />
-                <p className="image-caption">
-                  A little crunch at a table full of flavour.
-                </p>
+                <p className="image-caption">{t.crunchCaption}</p>
               </div>
               <div className="crunch-copy">
-                <p className="eyebrow">The little things that make the plate</p>
+                <p className="eyebrow">{t.crunchEyebrow}</p>
                 <h2 id="crunch-title">
-                  Kremes first.
+                  {t.crunchTitleFirst}
                   <br />
-                  <em>Sambal next.</em>
+                  <em>{t.crunchTitleSecond}</em>
                 </h2>
-                <p>
-                  Meet the golden, crispy flakes that give ayam kremes its
-                  crunch. Break them up, mix them in, and make every mouthful
-                  your own.
-                </p>
-                <p>
-                  Then choose a sambal. A spoonful alongside your favourite dish
-                  brings a little more character to the table.
-                </p>
+                <p>{t.crunchDescription}</p>
+                <p>{t.crunchDescriptionSecond}</p>
                 <a className="text-link" href="#sambal">
-                  Find your kind of sambal{' '}
-                  <ArrowRight size={18} aria-hidden="true" />
+                  {t.findSambal} <ArrowRight size={18} aria-hidden="true" />
                 </a>
               </div>
             </div>
@@ -349,15 +394,13 @@ export function App() {
               aria-labelledby="sambal-title"
             >
               <div className="sambal-copy">
-                <p className="eyebrow">A spoonful of personality</p>
+                <p className="eyebrow">{t.sambalEyebrow}</p>
                 <h2 className="section-title" id="sambal-title">
-                  Say it with <em>sambal.</em>
+                  {t.sambalTitleBefore} <em>{t.sambalTitleWord}</em>
                 </h2>
-                <p className="sambal-intro">
-                  Five sambals on the menu. Find your kind of kick.
-                </p>
+                <p className="sambal-intro">{t.sambalIntro}</p>
                 <div className="sambal-list">
-                  {content.sambals.map((option) => (
+                  {displayContent.sambals.map((option) => (
                     <div className="sambal-item" key={option.id}>
                       <h3>{option.name}</h3>
                       {option.description && <p>{option.description}</p>}
@@ -369,36 +412,34 @@ export function App() {
                 <img
                   className="sambal-photo"
                   src={sambal.path}
-                  alt={sambal.alt}
+                  alt={localizeImageAlt(sambal.path, sambal.alt, locale)}
                   width="640"
                   height="907"
                   loading="lazy"
                 />
-                <p className="image-caption">
-                  A few of the sambals at our table.
-                </p>
+                <p className="image-caption">{t.sambalCaption}</p>
               </div>
             </div>
             <div className="section-handoff story-handoff">
               <p>
-                Found your combination?
+                {t.storyBridge}
                 <br />
-                <span>Let’s take a look at the whole menu.</span>
+                <span>{t.storyBridgeNote}</span>
               </p>
               <a className="button button-primary" href="#menu">
-                Browse all dishes <ArrowUpRight size={18} aria-hidden="true" />
+                {t.browseDishes} <ArrowUpRight size={18} aria-hidden="true" />
               </a>
             </div>
           </div>
         </section>
 
         <MenuSection
-          categories={content.categories}
+          categories={displayContent.categories}
           menuPdf={content.menuPdf}
           selectedId={menuCategory}
           onCategoryChange={setMenuCategory}
         />
-        <BranchesSection branches={content.branches} />
+        <BranchesSection branches={displayContent.branches} />
 
         <section
           className="social-section section-space container"
@@ -407,9 +448,9 @@ export function App() {
         >
           <div className="section-heading">
             <div>
-              <p className="eyebrow">From our table</p>
+              <p className="eyebrow">{t.socialEyebrow}</p>
               <h2 className="section-title" id="social-title">
-                A little more Sarang.
+                {t.socialTitle}
               </h2>
             </div>
             <a
@@ -430,7 +471,7 @@ export function App() {
               >
                 <img
                   src={asset.path}
-                  alt={asset.alt}
+                  alt={localizeImageAlt(asset.path, asset.alt, locale)}
                   width="750"
                   height="650"
                   loading="lazy"
@@ -438,9 +479,7 @@ export function App() {
               </div>
             ))}
           </div>
-          <p className="social-note">
-            Food, moments, and the latest from our table. Find us on Instagram.
-          </p>
+          <p className="social-note">{t.socialNote}</p>
         </section>
       </main>
       <footer className="site-footer">
@@ -450,20 +489,22 @@ export function App() {
             <div>
               <Brand footer />
               <p>
-                <span lang="id">Selamat makan.</span>
+                <span lang={locale === 'ms' ? 'ms' : 'id'}>
+                  {t.footerGreeting}
+                </span>
                 <br />
-                See you at the Sarang table.
+                {t.footerNote}
               </p>
             </div>
-            <nav aria-label="Footer navigation">
+            <nav aria-label={t.footerNavigation}>
               <a href="#menu">
-                Our menu <ArrowUpRight size={16} aria-hidden="true" />
+                {t.ourMenu} <ArrowUpRight size={16} aria-hidden="true" />
               </a>
               <a href="#branches">
-                Find a branch <ArrowUpRight size={16} aria-hidden="true" />
+                {t.findBranch} <ArrowUpRight size={16} aria-hidden="true" />
               </a>
               <a href={content.menuPdf} target="_blank" rel="noreferrer">
-                View menu PDF <ArrowUpRight size={16} aria-hidden="true" />
+                {t.viewMenuPdf} <ArrowUpRight size={16} aria-hidden="true" />
               </a>
               <a
                 href={content.brand.instagram}
@@ -484,16 +525,16 @@ export function App() {
                 ))}
             </div>
             <a className="footer-invitation" href="#branches">
-              There’s a place
+              {t.footerInvitationFirst}
               <br />
-              at our table.
+              {t.footerInvitationSecond}
               <ArrowUpRight size={34} strokeWidth={1.2} aria-hidden="true" />
             </a>
           </div>
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} Ayam Kremes by Sarang</span>
             <span>Kremes. Bakar. Sambal.</span>
-            <a href="#home">Back to top ↑</a>
+            <a href="#home">{t.backToTop}</a>
           </div>
         </div>
       </footer>

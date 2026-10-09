@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import type { Branch } from '../types';
 import { telephoneUrl } from '../lib/links';
+import { useLocale } from '../i18n/LocaleContext';
+import { formatMessage } from '../i18n/format';
 import './menu-branches.css';
 
 function whatsappUrl(value: string) {
@@ -16,6 +18,7 @@ function whatsappUrl(value: string) {
 }
 
 export function BranchesSection({ branches }: { branches: Branch[] }) {
+  const { t } = useLocale();
   return (
     <section
       id="branches"
@@ -24,14 +27,11 @@ export function BranchesSection({ branches }: { branches: Branch[] }) {
     >
       <div className="container">
         <div className="branches-heading">
-          <p className="eyebrow">Come to the table</p>
+          <p className="eyebrow">{t.branchesEyebrow}</p>
           <h2 id="branches-title" className="section-title">
-            Your table is waiting.
+            {t.branchesTitle}
           </h2>
-          <p>
-            Found a favourite? Find your nearest Sarang, check the opening
-            hours, and come share a meal.
-          </p>
+          <p>{t.branchesIntroduction}</p>
         </div>
 
         {branches.length > 0 ? (
@@ -59,7 +59,7 @@ export function BranchesSection({ branches }: { branches: Branch[] }) {
                     <div className="branch-detail">
                       <Clock3 size={18} aria-hidden="true" />
                       <div>
-                        <span className="sr-only">Opening hours: </span>
+                        <span className="sr-only">{t.openingHours} </span>
                         {branch.hours.map((line) => (
                           <p key={line}>{line}</p>
                         ))}
@@ -82,9 +82,12 @@ export function BranchesSection({ branches }: { branches: Branch[] }) {
                     href={branch.mapsUrl}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`Get directions to ${branch.name}`}
+                    aria-label={formatMessage(t.directionsToBranch, {
+                      name: branch.name,
+                    })}
                   >
-                    Get directions <ArrowUpRight size={17} aria-hidden="true" />
+                    {t.getDirections}{' '}
+                    <ArrowUpRight size={17} aria-hidden="true" />
                   </a>
                   {branch.whatsapp && (
                     <a
@@ -92,7 +95,9 @@ export function BranchesSection({ branches }: { branches: Branch[] }) {
                       href={whatsappUrl(branch.whatsapp)}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={`Contact ${branch.name} on WhatsApp`}
+                      aria-label={formatMessage(t.contactWhatsapp, {
+                        name: branch.name,
+                      })}
                     >
                       <MessageCircle size={17} aria-hidden="true" /> WhatsApp
                     </a>
@@ -105,11 +110,8 @@ export function BranchesSection({ branches }: { branches: Branch[] }) {
           <div className="branch-fallback">
             <MapPin size={28} strokeWidth={1.5} aria-hidden="true" />
             <div>
-              <h3>Let’s find you a table.</h3>
-              <p>
-                Visit our Instagram for the latest branch details and opening
-                hours.
-              </p>
+              <h3>{t.fallbackTitle}</h3>
+              <p>{t.fallbackDescription}</p>
             </div>
             <a
               className="button button-outline"
@@ -117,7 +119,7 @@ export function BranchesSection({ branches }: { branches: Branch[] }) {
               target="_blank"
               rel="noreferrer"
             >
-              Find us on Instagram <ArrowUpRight size={17} aria-hidden="true" />
+              {t.instagramLink} <ArrowUpRight size={17} aria-hidden="true" />
             </a>
           </div>
         )}

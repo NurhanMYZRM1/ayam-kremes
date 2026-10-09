@@ -15,6 +15,8 @@ Open the Local URL printed by Vite, normally **http://127.0.0.1:5173/**. Navigat
 
 The Indonesian table design preview is on branch `codex/indonesian-table`. Run `npm run dev -- --port 5176 --strictPort` to reproduce the review preview. Its [design notes](docs/indonesian-refresh.md) cover the Mobbin references and connected visitor journey.
 
+The header's **EN / BM** controls switch between English and Bahasa Melayu. The choice is remembered locally. Share a Malay view with `?lang=ms`, including a section anchor such as `http://127.0.0.1:5176/?lang=ms#menu`. Original dish names and printed prices remain unchanged in both languages. The downloadable PDF remains the supplied original menu.
+
 ## Build and verify
 
 ```sh
@@ -47,6 +49,8 @@ Format editable project files with `npm run format`.
 | Downloadable original menu                              | `public/menu/ayam-kremes-menu.pdf` |
 | Colours, typography, shared layout                      | `src/styles.css`                   |
 | Source evidence and unresolved facts                    | `docs/content-sources.md`          |
+
+Interface/editorial translations are in `src/content/translations.ts`. Malay menu descriptions, category titles, hours and alternative text are in `src/content/menu-ms.json`. Keep that overlay in sync when updating the sourced English menu. See [bilingual interface notes](docs/bilingual-interface.md).
 
 The supplied PDF prints prices without a currency and has 2023 creation metadata. The site preserves the printed values and asks visitors to check current prices with a branch. Currency, current prices, and inclusions still need restaurant confirmation.
 

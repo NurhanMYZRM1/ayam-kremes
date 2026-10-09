@@ -10,6 +10,41 @@ const data = JSON.parse(
   ),
 );
 
+test('Malay translations cover sourced display text without duplicating restaurant facts', () => {
+  const malay = JSON.parse(
+    readFileSync(
+      new URL('../src/content/menu-ms.json', import.meta.url),
+      'utf8',
+    ),
+  );
+  for (const category of data.categories) {
+    assert.ok(malay.categories[category.id]?.name);
+    for (const item of category.items) {
+      const translation = malay.items[item.id];
+      if (item.description)
+        assert.ok(
+          translation?.description,
+          `Missing Malay description: ${item.id}`,
+        );
+      if (item.image)
+        assert.ok(
+          translation?.imageAlt,
+          `Missing Malay image text: ${item.id}`,
+        );
+      for (const variant of item.variants ?? [])
+        assert.ok(translation?.variants?.[variant.name]);
+    }
+  }
+  for (const value of Object.values(malay.items))
+    assert.ok(
+      Object.keys(value).every((key) =>
+        ['description', 'imageAlt', 'variants'].includes(key),
+      ),
+    );
+  for (const branch of data.branches)
+    assert.equal(malay.branches[branch.id].hours.length, branch.hours.length);
+});
+
 test('menu, assets, and source attribution are internally complete', () => {
   const ids = new Set();
   for (const category of data.categories) {

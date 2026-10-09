@@ -4,6 +4,8 @@ First local release prepared on **9 October 2026**, Asia/Kuala_Lumpur.
 
 The baseline has since been deployed to Cloudflare Workers at `ayamkremes.com`. The **10 October 2026 Indonesian table refresh** is an isolated local review branch, `codex/indonesian-table`, described in [indonesian-refresh.md](indonesian-refresh.md). Preview that branch on port 5176. The original release notes below retain the content and architecture context.
 
+That local branch now also includes an English/Bahasa Melayu interface. The EN/BM switch remembers the preference and supports `?lang=ms` links. Translation files, content invariants, and bilingual checks are documented in [bilingual-interface.md](bilingual-interface.md).
+
 ## What exists
 
 A complete English restaurant website using original dish names: editorial homepage, three featured dishes, kremes introduction, five verified sambals, a browsable seven-category menu containing 39 items, two branch listings, a small photo gallery, Instagram link, menu PDF, and contact/navigation footer. No payment, account, reservation, ordering, CMS, or loyalty system is implemented.
