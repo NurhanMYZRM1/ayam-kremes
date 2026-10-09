@@ -1,0 +1,559 @@
+{
+  "brand": {
+    "name": "Ayam Kremes by Sarang",
+    "instagram": "https://www.instagram.com/ayamkremes_my/",
+    "tagline": "A little crunch. A lot to love."
+  },
+  "menuPdf": "/menu/ayam-kremes-menu.pdf",
+  "categories": [
+    {
+      "id": "kremes",
+      "name": "Kremes",
+      "description": "Choose one sambal: terasi, ijo or balado.",
+      "items": [
+        {
+          "id": "K01",
+          "name": "Ayam Kremes",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried chicken served with crunchy fried flakes.",
+          "price": "15",
+          "image": "/images/ayam-kremes.webp",
+          "imageAlt": "Ayam Kremes photographed for the restaurant menu",
+          "featured": true
+        },
+        {
+          "id": "K02",
+          "name": "Lele Kremes",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried catfish served with crunchy fried flakes.",
+          "price": "15",
+          "image": "/images/lele-kremes.webp",
+          "imageAlt": "Lele Kremes photographed for the restaurant menu"
+        },
+        {
+          "id": "K03",
+          "name": "Bawal Kremes",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried pomfret fish served with crunchy fried flakes.",
+          "price": "20",
+          "image": "/images/bawal-kremes.webp",
+          "imageAlt": "Bawal Kremes photographed for the restaurant menu"
+        },
+        {
+          "id": "K04",
+          "name": "Udang Kremes",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried prawn served with crunchy fried flakes.",
+          "price": "15",
+          "image": "/images/udang-kremes.webp",
+          "imageAlt": "Udang Kremes photographed for the restaurant menu",
+          "featured": true
+        },
+        {
+          "id": "K05",
+          "name": "Cumi Kremes",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried squid served with crunchy fried flakes.",
+          "price": "25"
+        },
+        {
+          "id": "K06",
+          "name": "Dendeng Kremes",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Slow cooked thinly sliced beef with Indonesian herbs and spices served with crunchy fried flakes.",
+          "price": "15"
+        },
+        {
+          "id": "K07",
+          "name": "Iga Kremes",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Slow cooked beef ribs with Indonesian herbs and spices served with crunchy fried flakes.",
+          "price": "30"
+        }
+      ]
+    },
+    {
+      "id": "bakar",
+      "name": "Bakar",
+      "description": "Grilled dishes, from honey roasted chicken to beef ribs.",
+      "items": [
+        {
+          "id": "B01",
+          "name": "Ayam Bakar Madu",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Grilled honey roasted chicken.",
+          "price": "15",
+          "image": "/images/ayam-bakar-madu.webp",
+          "imageAlt": "Ayam Bakar Madu photographed for the restaurant menu",
+          "featured": true
+        },
+        {
+          "id": "B02",
+          "name": "Ikan Bawal Bakar Bumbu Rujak",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Grilled pomfret fish with traditional Indonesian Javanese red spice sauce.",
+          "price": "20"
+        },
+        {
+          "id": "B03",
+          "name": "Cumi Bakar Bumbu Rujak",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Grilled squid with traditional Indonesian Javanese red spice sauce.",
+          "price": "25",
+          "image": "/images/cumi-bakar.webp",
+          "imageAlt": "Cumi Bakar Bumbu Rujak photographed for the restaurant menu"
+        },
+        {
+          "id": "B04",
+          "name": "Iga Bakar",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Grilled beef ribs with mild spicy black sweet sauce.",
+          "price": "30"
+        }
+      ]
+    },
+    {
+      "id": "appetizer",
+      "name": "Appetizer",
+      "description": "A little something to start the table.",
+      "items": [
+        {
+          "id": "A01",
+          "name": "Emping with Sambal",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Indonesian belinjo nuts cracker served with traditional Indonesian chili paste.",
+          "price": "6",
+          "image": "/images/emping.webp",
+          "imageAlt": "Emping with Sambal photographed for the restaurant menu"
+        },
+        {
+          "id": "A02",
+          "name": "Keripik Tempe with Sambal",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Fermented soybeans cracker served with traditional Indonesian chili paste.",
+          "price": "6",
+          "image": "/images/keripik-tempe.webp",
+          "imageAlt": "Keripik Tempe with Sambal photographed for the restaurant menu"
+        },
+        {
+          "id": "A03",
+          "name": "Tahu Tempe Telur with Sambal",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried bean curd, fermented soybeans and hard-boiled egg served with Indonesian chili paste.",
+          "price": "8"
+        },
+        {
+          "id": "A04",
+          "name": "Bakso Goreng",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried Indonesian meatball.",
+          "price": "8"
+        },
+        {
+          "id": "A05",
+          "name": "Perkedel Kentang Ayam",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Mashed potato and chicken patty fritters.",
+          "price": "10",
+          "image": "/images/perkedel-kentang-ayam.webp",
+          "imageAlt": "Perkedel Kentang Ayam photographed for the restaurant menu"
+        }
+      ]
+    },
+    {
+      "id": "vegetables",
+      "name": "Vegetables",
+      "description": "Gado Gado, Terung Kremes Balado and Kobis Kremes.",
+      "items": [
+        {
+          "id": "V01",
+          "name": "Gado Gado",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Indonesian style salad with blanched vegetables, tempe and hardboiled egg served with peanut sauce.",
+          "price": "15",
+          "image": "/images/gado-gado.webp",
+          "imageAlt": "Gado Gado photographed for the restaurant menu"
+        },
+        {
+          "id": "V02",
+          "name": "Terung Kremes Balado",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Eggplant served with traditional Indonesian chili paste.",
+          "price": "10"
+        },
+        {
+          "id": "V03",
+          "name": "Kobis Kremes",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried cabbage.",
+          "price": "10"
+        }
+      ]
+    },
+    {
+      "id": "sup",
+      "name": "Sup",
+      "description": "Traditional Jakarta soups and sweet and sour tamarind soup.",
+      "items": [
+        {
+          "id": "S01",
+          "name": "Soto Betawi Daging",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Traditional Jakarta soup with beef broth, beef and vegetables.",
+          "price": "20",
+          "image": "/images/soto-betawi-daging.webp",
+          "imageAlt": "Soto Betawi Daging photographed for the restaurant menu"
+        },
+        {
+          "id": "S02",
+          "name": "Soto Betawi Ayam",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Traditional Jakarta soup with chicken broth, chicken and vegetables.",
+          "price": "15"
+        },
+        {
+          "id": "S03",
+          "name": "Sup Sayur Asem",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Various vegetables in sweet and sour tamarind soup.",
+          "price": "12"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "name": "Drinks",
+      "description": "Something refreshing alongside your meal.",
+      "items": [
+        {
+          "id": "D01",
+          "name": "Teh O",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "variants": [
+            {
+              "name": "Iced",
+              "price": "4"
+            },
+            {
+              "name": "Hot",
+              "price": "3"
+            }
+          ]
+        },
+        {
+          "id": "D02",
+          "name": "Teh Tarik",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "variants": [
+            {
+              "name": "Iced",
+              "price": "5"
+            },
+            {
+              "name": "Hot",
+              "price": "4"
+            }
+          ]
+        },
+        {
+          "id": "D03",
+          "name": "Signature Lemongrass Limeade with Daun Limau",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "image": "/images/lemongrass-limeade.webp",
+          "imageAlt": "Signature Lemongrass Limeade with Daun Limau photographed for the restaurant menu",
+          "variants": [
+            {
+              "name": "Iced",
+              "price": "9"
+            },
+            {
+              "name": "Hot",
+              "price": "8"
+            }
+          ]
+        },
+        {
+          "id": "D04",
+          "name": "Iced Lychee Jasmine Soda",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "price": "9",
+          "image": "/images/lychee-jasmine-soda.webp",
+          "imageAlt": "Iced Lychee Jasmine Soda photographed for the restaurant menu"
+        },
+        {
+          "id": "D05",
+          "name": "Iced Matcha Latte",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "price": "9"
+        },
+        {
+          "id": "D06",
+          "name": "Premium Hot Tea Bag",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Tea selection: supreme earl grey tea, oriental jasmine green tea.",
+          "price": "6"
+        },
+        {
+          "id": "D07",
+          "name": "Teh Botol Sosro",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "price": "6"
+        },
+        {
+          "id": "D08",
+          "name": "Teh Pucuk Harum",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "price": "5"
+        },
+        {
+          "id": "D09",
+          "name": "Air Tin",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Coke, Sprite, iced lemon tea, A&W.",
+          "price": "5"
+        },
+        {
+          "id": "D10",
+          "name": "Mineral Water",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "price": "4"
+        }
+      ]
+    },
+    {
+      "id": "add-on",
+      "name": "Add On",
+      "description": "Rice, kremesan and a little extra sambal.",
+      "items": [
+        {
+          "id": "T01",
+          "name": "Nasi Putih",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Steamed white rice.",
+          "price": "2"
+        },
+        {
+          "id": "T02",
+          "name": "Kremesan",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Deep fried aromatic crunchy fried flakes.",
+          "price": "2"
+        },
+        {
+          "id": "T03",
+          "name": "Sambal Terasi",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Red chili paste.",
+          "price": "3"
+        },
+        {
+          "id": "T04",
+          "name": "Sambal Ijo",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Green chili paste.",
+          "price": "3"
+        },
+        {
+          "id": "T05",
+          "name": "Sambal Balado",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Minang red paste.",
+          "price": "3"
+        },
+        {
+          "id": "T06",
+          "name": "Sambal Kicap Bakar",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "BBQ spicy black soy sauce.",
+          "price": "3"
+        },
+        {
+          "id": "T07",
+          "name": "Sambal Soto",
+          "source": "/menu/ayam-kremes-menu.pdf#page=1",
+          "description": "Raw red chili paste.",
+          "price": "3"
+        }
+      ]
+    }
+  ],
+  "sambals": [
+    {
+      "id": "T03",
+      "name": "Sambal Terasi",
+      "description": "Red chili paste.",
+      "source": "/menu/ayam-kremes-menu.pdf#page=1"
+    },
+    {
+      "id": "T04",
+      "name": "Sambal Ijo",
+      "description": "Green chili paste.",
+      "source": "/menu/ayam-kremes-menu.pdf#page=1"
+    },
+    {
+      "id": "T05",
+      "name": "Sambal Balado",
+      "description": "Minang red paste.",
+      "source": "/menu/ayam-kremes-menu.pdf#page=1"
+    },
+    {
+      "id": "T06",
+      "name": "Sambal Kicap Bakar",
+      "description": "BBQ spicy black soy sauce.",
+      "source": "/menu/ayam-kremes-menu.pdf#page=1"
+    },
+    {
+      "id": "T07",
+      "name": "Sambal Soto",
+      "description": "Raw red chili paste.",
+      "source": "/menu/ayam-kremes-menu.pdf#page=1"
+    }
+  ],
+  "branches": [
+    {
+      "id": "kota-damansara",
+      "name": "Kota Damansara",
+      "address": "A-G-11, Kompleks Perindustrian Emhub, Persiaran Surian, Kota Damansara, 47810 Petaling Jaya, Selangor",
+      "hours": ["Daily · 11am–10pm"],
+      "phone": "03-6143 4188",
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=Ayam%20Kremes%20by%20Sarang%2C%20A-G-11%2C%20Kompleks%20Perindustrian%20Emhub%2C%20Persiaran%20Surian%2C%20Kota%20Damansara%2C%2047810%20Petaling%20Jaya%2C%20Selangor",
+      "source": "https://www.instagram.com/ayamkremes_my/p/DYGVUFaD3_D/"
+    },
+    {
+      "id": "kuala-terengganu",
+      "name": "Kuala Terengganu",
+      "address": "13, Tingkat Bawah, Pusat Komersial Chabang Tiga, 21000 Kuala Terengganu, Terengganu",
+      "hours": ["Saturday–Thursday · 11am–10pm", "Friday · Closed"],
+      "phone": "09-626 1518",
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=Ayam%20Kremes%20by%20Sarang%2C%2013%2C%20Tingkat%20Bawah%2C%20Pusat%20Komersial%20Chabang%20Tiga%2C%2021000%20Kuala%20Terengganu%2C%20Terengganu",
+      "source": "https://www.instagram.com/ayamkremes_my/p/DYGVUFaD3_D/"
+    }
+  ],
+  "assets": [
+    {
+      "path": "/images/ayam-kremes.webp",
+      "source": "https://images.pixieset.com/74672165/0ea5ff2268a3c3c533767efee677c81f-large.jpg",
+      "description": "DSC_4112; Ayam Kremes, matched to PDF photo K01.",
+      "dishIds": ["K01"]
+    },
+    {
+      "path": "/images/ayam-bakar-madu.webp",
+      "source": "https://images.pixieset.com/74672165/f5caec57ef3260f578105ba7e6852a2d-large.jpg",
+      "description": "DSC_2135; Ayam Bakar Madu, matched to PDF photo B01.",
+      "dishIds": ["B01"]
+    },
+    {
+      "path": "/images/bawal-kremes.webp",
+      "source": "https://images.pixieset.com/74672165/02d0f720d55cdfc3c94571b1f4377ceb-large.jpg",
+      "description": "DSC_4107; Bawal Kremes, matched to PDF photo K03.",
+      "dishIds": ["K03"]
+    },
+    {
+      "path": "/images/udang-kremes.webp",
+      "source": "https://images.pixieset.com/74672165/57e911f3dcff53cef770be0517a2209d-large.jpg",
+      "description": "DSC_2119; Udang Kremes, matched to PDF photo K04.",
+      "dishIds": ["K04"]
+    },
+    {
+      "path": "/images/lele-kremes.webp",
+      "source": "https://images.pixieset.com/74672165/0a1b854c19b7daf7ef96adbecc6844c8-large.jpg",
+      "description": "DSC_4118; Lele Kremes, matched to PDF photo K02.",
+      "dishIds": ["K02"]
+    },
+    {
+      "path": "/images/cumi-bakar.webp",
+      "source": "https://images.pixieset.com/74672165/af64df57f5967bb4ba2d75fa97fce771-large.jpg",
+      "description": "DSC_4137; Cumi Bakar Bumbu Rujak, matched to PDF photo B03.",
+      "dishIds": ["B03"]
+    },
+    {
+      "path": "/images/gado-gado.webp",
+      "source": "https://images.pixieset.com/74672165/62196d785bed644c6963f16014d59675-large.jpg",
+      "description": "DSC_4097; Gado Gado, matched to PDF photo V01.",
+      "dishIds": ["V01"]
+    },
+    {
+      "path": "/images/soto-betawi-daging.webp",
+      "source": "https://images.pixieset.com/74672165/800340a30124f3405c0272deeaa1dca1-large.jpg",
+      "description": "DSC_4102; Soto Betawi Daging, matched to PDF photo S01.",
+      "dishIds": ["S01"]
+    },
+    {
+      "path": "/images/perkedel-kentang-ayam.webp",
+      "source": "https://images.pixieset.com/74672165/9d0a5ca8854976a16c5b078583206d9a-large.jpg",
+      "description": "DSC_2125; Perkedel Kentang Ayam, matched to PDF photo A05.",
+      "dishIds": ["A05"]
+    },
+    {
+      "path": "/images/emping.webp",
+      "source": "https://images.pixieset.com/74672165/08a00857263c75af1bb93f8d7087791c-large.jpg",
+      "description": "DSC_4133; Emping with Sambal, matched to PDF photo A01.",
+      "dishIds": ["A01"]
+    },
+    {
+      "path": "/images/keripik-tempe.webp",
+      "source": "https://images.pixieset.com/74672165/093cc54a47fbcf554fda34e5048c29d9-large.jpg",
+      "description": "DSC_4129; Keripik Tempe with Sambal, matched to PDF photo A02.",
+      "dishIds": ["A02"]
+    },
+    {
+      "path": "/images/the-sarang-table.webp",
+      "source": "https://images.pixieset.com/74672165/d0e0bda94b2f89ac55b705694872d6f7-large.jpg",
+      "description": "DSC_2286; styled restaurant food spread; use general caption only.",
+      "dishIds": []
+    },
+    {
+      "path": "/images/sambal-selection.webp",
+      "source": "https://images.pixieset.com/74672165/bff55580bbd1f81140614a996638f68b-large.jpg",
+      "description": "DSC_2284; four sambal bowls, matching the T03/T04/T06/T07 sauce arrangements in PDF.",
+      "dishIds": ["T03", "T04", "T06", "T07"]
+    },
+    {
+      "path": "/images/lemongrass-limeade.webp",
+      "source": "https://images.pixieset.com/74672165/85e5fa956c58d565c68bd7c0659c8702-large.jpg",
+      "description": "DSC_2144; Signature Lemongrass Limeade with Daun Limau, matched to PDF photo D03.",
+      "dishIds": ["D03"]
+    },
+    {
+      "path": "/images/lychee-jasmine-soda.webp",
+      "source": "https://images.pixieset.com/74672165/b94f4eba84b927083cd268b0a044deeb-large.jpg",
+      "description": "DSC_2151; Iced Lychee Jasmine Soda, matched to PDF photo D04.",
+      "dishIds": ["D04"]
+    },
+    {
+      "path": "/images/sharing-at-the-table.webp",
+      "source": "https://images.pixieset.com/74672165/1f241e2aaa8dabfb030070ca6c752129-large.jpg",
+      "description": "DSC_2302; hands presenting dishes at the restaurant table; use general caption only.",
+      "dishIds": []
+    },
+    {
+      "path": "/images/sambal-dip.webp",
+      "source": "https://images.pixieset.com/74672165/9f830f03db35d1305fd7ea3b2e36a5c3-large.jpg",
+      "description": "DSC_2298; Perkedel Kentang Ayam being dipped into sambal, matched to PDF A05.",
+      "dishIds": ["A05"]
+    },
+    {
+      "path": "/images/ayam-kremes-hero.webp",
+      "source": "https://images.pixieset.com/74672165/0ea5ff2268a3c3c533767efee677c81f-xxlarge.jpg",
+      "description": "DSC_4112, 1600 × 1067; Ayam Kremes image matched to PDF K01. Rice appears separately in photograph; inclusion in dish price is not asserted.",
+      "dishIds": ["K01"]
+    },
+    {
+      "path": "/images/logo.png",
+      "source": "/menu/ayam-kremes-menu.pdf#page=1",
+      "description": "Original circular restaurant logo cropped from upper-left of supplied menu."
+    }
+  ],
+  "unresolved": [
+    "The supplied menu PDF has creation metadata dated 9 February 2023; current dine-in prices and availability need restaurant confirmation.",
+    "The PDF prints numeric prices without a currency label. Website prices preserve those numbers without inferring a currency.",
+    "Rice and pictured sides are not assumed included. Nasi Putih is separately listed under Add On.",
+    "Instagram post dated 8 May 2026 confirms branch addresses, telephone numbers and operating hours; holiday exceptions still need restaurant confirmation.",
+    "Foodpanda delivery listings show shorter operating windows than official Instagram dine-in hours. Official Instagram hours are used on this site; the discrepancy is recorded in docs/content-sources.md.",
+    "Google Maps directions URLs were constructed from the verified official addresses; map pins were not supplied by the restaurant.",
+    "No official WhatsApp, reservation or ordering links were supplied or verified. These actions are omitted.",
+    "No current dietary or certification claims have been independently verified, and none are published.",
+    "The original vector logo and higher resolution source photography would improve future asset quality. Existing gallery photos were supplied by the user and visually matched to the supplied menu; ownership/licensing documentation was not separately provided.",
+    "The tagline and short category introductions are proposed website copy, not sourced restaurant history."
+  ]
+}
