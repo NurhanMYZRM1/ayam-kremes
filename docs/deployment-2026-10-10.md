@@ -18,7 +18,7 @@ A live browser smoke check verified homepage-to-menu navigation, switching to Ba
 
 ## Maintain and roll back
 
-Continue development in this branch/checkout. Deploy future changes using `npm run deploy` after relevant checks. Authentication uses the existing local Wrangler session; no credentials belong in the repository. The latest application changes remain in local Git history and have not been pushed to GitHub.
+Continue development in this branch/checkout. Deploy future changes using `npm run deploy` after relevant checks. Authentication uses the existing local Wrangler session; no credentials belong in the repository. Source history is maintained in the public [GitHub repository](https://github.com/NurhanMYZRM1/ayam-kremes). GitHub pushes and merges do not automatically deploy; publishing remains an explicit `npm run deploy` action.
 
 If a rollback is required, run this from the checkout and confirm the version shown by Wrangler:
 

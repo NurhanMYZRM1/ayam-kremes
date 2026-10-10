@@ -12,5 +12,5 @@ Read `docs/CLAUDE-HANDOFF.md` for the architecture and decisions and `docs/conte
 - Read `docs/apple-design-upgrade.md` for the current menu/flow refinement. Compact layouts use a native category select; desktop uses a scrollable one-level rail. `tests/browser/menu-flow.spec.ts` covers keyboard continuation and 200% text sizing.
 - Read `docs/menu-redesign.md` for the dedicated page, photo rules, ordinary page links and web motion decisions. Vite builds two real HTML entries sharing one bundle.
 - Read `docs/indonesian-refresh.md` for the current design revision. Its local preview uses port 5176; browser tests own port 5177 by default, configurable with `PLAYWRIGHT_PORT`.
-- The baseline is deployed to Cloudflare Workers at `ayamkremes.com`. `npm run deploy` publishes to production using the pinned account in `wrangler.jsonc`; this design branch remains a local preview until approved for publication.
+- The current bilingual design is deployed to Cloudflare Workers at `ayamkremes.com`. Read `docs/deployment-2026-10-10.md` for the deployed application commit and rollback version. `npm run deploy` publishes to production using the pinned account in `wrangler.jsonc`; GitHub pushes and merges do not automatically deploy.
 - Advanced ordering/account systems remain future work.
