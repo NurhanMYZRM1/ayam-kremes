@@ -9,7 +9,7 @@ import type { Branch } from '../types';
 import { telephoneUrl } from '../lib/links';
 import { useLocale } from '../i18n/LocaleContext';
 import { formatMessage } from '../i18n/format';
-import './menu-branches.css';
+import './branches.css';
 
 function whatsappUrl(value: string) {
   return /^https:\/\//i.test(value)

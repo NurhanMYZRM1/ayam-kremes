@@ -3,6 +3,13 @@ export type Locale = 'en' | 'ms';
 export type MessageKey =
   | 'pageTitle'
   | 'pageDescription'
+  | 'menuPageTitle'
+  | 'backHome'
+  | 'menuPhotoCaption'
+  | 'menuRailLabel'
+  | 'menuPreviewEyebrow'
+  | 'menuPreviewTitle'
+  | 'menuPreviewIntro'
   | 'homeLabel'
   | 'skipToContent'
   | 'openNavigation'

@@ -12,6 +12,8 @@ Added **10 October 2026** to the local `codex/indonesian-table` design branch. P
 - Malay links use `?lang=ms` and preserve the current section hash. For example: `http://127.0.0.1:5176/?lang=ms#branches`.
 - Original restaurant/dish names, addresses, phones, maps, prices and PDF are retained. No currency, ingredient, included side, dietary or historical claim was added through translation.
 
+The full menu now lives at `/menu/`. Share a Malay category with `/menu/?lang=ms&category=bakar#menu-category-content`. Page links retain the language and the selected category survives reload. See [menu-redesign.md](menu-redesign.md).
+
 ## Editable files
 
 | Location                          | Purpose                                                                                         |

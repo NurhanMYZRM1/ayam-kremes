@@ -4,6 +4,14 @@ import type { Locale, Messages } from '../i18n/types';
 export const messages: Record<Locale, Messages> = {
   en: {
     pageTitle: 'Ayam Kremes by Sarang — Kremes, Bakar & Sambal',
+    menuPageTitle: 'Our menu — Ayam Kremes by Sarang',
+    backHome: 'Back to Sarang',
+    menuPhotoCaption: 'A taste of the Sarang table.',
+    menuRailLabel: 'On the menu',
+    menuPreviewEyebrow: 'Find your flavour',
+    menuPreviewTitle: 'Something for every appetite.',
+    menuPreviewIntro:
+      'Crispy kremes, smoky bakar, a bowl of soup, or something to share. Take a look around our menu.',
     pageDescription:
       'Come hungry. Explore the menu, meet the sambals, and find your way to Ayam Kremes by Sarang.',
     homeLabel: '{name} home',
@@ -96,6 +104,14 @@ export const messages: Record<Locale, Messages> = {
   },
   ms: {
     pageTitle: 'Ayam Kremes by Sarang — Kremes, Bakar & Sambal',
+    menuPageTitle: 'Menu kami — Ayam Kremes by Sarang',
+    backHome: 'Kembali ke Sarang',
+    menuPhotoCaption: 'Antara hidangan di meja Sarang.',
+    menuRailLabel: 'Pilihan menu',
+    menuPreviewEyebrow: 'Ikut selera anda',
+    menuPreviewTitle: 'Pilihan untuk setiap selera.',
+    menuPreviewIntro:
+      'Kremes rangup, hidangan bakar, semangkuk sup, atau hidangan untuk dikongsi. Jom terokai menu kami.',
     pageDescription:
       'Jom makan. Terokai menu, kenali pilihan sambal, dan cari cawangan Ayam Kremes by Sarang.',
     homeLabel: 'Laman utama {name}',

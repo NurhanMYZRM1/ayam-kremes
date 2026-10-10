@@ -11,11 +11,11 @@ npm ci
 npm run dev
 ```
 
-Open the Local URL printed by Vite, normally **http://127.0.0.1:5173/**. Navigation uses normal section anchors: `#menu`, `#branches`, and `#the-crunch`.
+Open the Local URL printed by Vite, normally **http://127.0.0.1:5173/**. The full menu has its own `/menu/` page. Branch and story navigation use homepage anchors: `/#branches` and `/#the-crunch`.
 
 The Indonesian table design preview is on branch `codex/indonesian-table`. Run `npm run dev -- --port 5176 --strictPort` to reproduce the review preview. Its [design notes](docs/indonesian-refresh.md) cover the Mobbin references and connected visitor journey.
 
-The header's **EN / BM** controls switch between English and Bahasa Melayu. The choice is remembered locally. Share a Malay view with `?lang=ms`, including a section anchor such as `http://127.0.0.1:5176/?lang=ms#menu`. Original dish names and printed prices remain unchanged in both languages. The downloadable PDF remains the supplied original menu.
+The header's **EN / BM** controls switch between English and Bahasa Melayu. The choice is remembered locally. Share a Malay view with `?lang=ms`, including a section anchor such as `http://127.0.0.1:5176/menu/?lang=ms`. Original dish names and printed prices remain unchanged in both languages. The downloadable PDF remains the supplied original menu. Category links can be shared with `?category=bakar`; see [dedicated menu notes](docs/menu-redesign.md).
 
 ## Build and verify
 
@@ -60,6 +60,6 @@ Start with [the implementation handoff](docs/CLAUDE-HANDOFF.md). `CLAUDE.md` als
 
 ## Hosting
 
-The baseline site is deployed at `https://ayamkremes.com` through Cloudflare Workers static assets. `wrangler.jsonc` serves `dist/`, pins the owning account, and disables `workers.dev`. The `www` hostname is not configured. `npm run deploy` builds and publishes to the production domain, and requires an authenticated Wrangler session. The Indonesian table refresh is a local review version and has not been deployed. All current routes are same-page anchors, so no server routing layer is needed.
+The baseline site is deployed at `https://ayamkremes.com` through Cloudflare Workers static assets. `wrangler.jsonc` serves `dist/`, pins the owning account, and disables `workers.dev`. The `www` hostname is not configured. `npm run deploy` builds and publishes to the production domain, and requires an authenticated Wrangler session. The Indonesian table refresh is a local review version and has not been deployed. Vite produces `dist/index.html` and `dist/menu/index.html` as real static pages, sharing the React bundle. No server routing layer is needed.
 
 Restaurant photographs, logo, and menu remain attributed to their original sources. Public repository visibility does not grant a separate license to those assets.

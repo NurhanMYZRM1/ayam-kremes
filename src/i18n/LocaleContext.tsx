@@ -9,6 +9,7 @@ import {
 import type { ReactNode } from 'react';
 import { messages } from '../content/translations';
 import type { Locale, Messages } from './types';
+import { isMenuPage } from '../lib/navigation';
 
 const storageKey = 'sarang.locale';
 const LocaleContext = createContext<{
@@ -61,7 +62,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = locale;
-    document.title = t.pageTitle;
+    document.title = isMenuPage ? t.menuPageTitle : t.pageTitle;
     document
       .querySelector<HTMLMetaElement>('meta[name="description"]')
       ?.setAttribute('content', t.pageDescription);
