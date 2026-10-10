@@ -9,10 +9,12 @@ const executablePath =
     ? macChrome
     : undefined);
 
-// Another checkout or worktree may already be serving on 5173, and
-// reuseExistingServer would then test that code instead of this one.
-// Set PLAYWRIGHT_PORT to an unused port to force a server for this tree.
-const port = process.env.PLAYWRIGHT_PORT || '5173';
+// Own the test server so a different checkout cannot silently be tested.
+// Keep this port separate from the visible preview.
+const port = Number(process.env.PLAYWRIGHT_PORT || '5177');
+if (!Number.isInteger(port) || port < 1 || port > 65535) {
+  throw new Error('PLAYWRIGHT_PORT must be a valid TCP port.');
+}
 const baseURL = `http://127.0.0.1:${port}`;
 
 export default defineConfig({
@@ -29,6 +31,6 @@ export default defineConfig({
   webServer: {
     command: `npm run dev -- --port ${port} --strictPort`,
     url: baseURL,
-    reuseExistingServer: true,
+    reuseExistingServer: false,
   },
 });

@@ -1,6 +1,6 @@
 # Release verification
 
-Checked **9 October 2026** in local Chrome/Chromium. The site remains a local preview; no deployment or DNS change was made.
+This document records the original **9 October 2026** local verification. The baseline was subsequently deployed to Cloudflare Workers. Current local design review and checks are recorded in [indonesian-refresh.md](indonesian-refresh.md).
 
 | Check                  | Result                                                                                                                                |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |

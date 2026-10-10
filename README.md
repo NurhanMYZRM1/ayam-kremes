@@ -11,7 +11,13 @@ npm ci
 npm run dev
 ```
 
-Open the Local URL printed by Vite, normally **http://127.0.0.1:5173/**. Navigation uses normal section anchors: `#menu`, `#branches`, and `#the-crunch`.
+Open the Local URL printed by Vite, normally **http://127.0.0.1:5173/**. The full menu has its own `/menu/` page. Branch and story navigation use homepage anchors: `/#branches` and `/#the-crunch`.
+
+The Indonesian table design preview is on branch `codex/indonesian-table`. Run `npm run dev -- --port 5176 --strictPort` to reproduce the review preview. Its [design notes](docs/indonesian-refresh.md) cover the Mobbin references and connected visitor journey.
+
+The latest design refinement uses Apple’s accessibility and layout principles for this website: larger reading text, a compact category picker, keyboard-friendly previous/next browsing and a clearer branch handoff. See [the design review and upgrade notes](docs/apple-design-upgrade.md).
+
+The header's **EN / BM** controls switch between English and Bahasa Melayu. The choice is remembered locally. Share a Malay view with `?lang=ms`, including a section anchor such as `http://127.0.0.1:5176/menu/?lang=ms`. Original dish names and printed prices remain unchanged in both languages. The downloadable PDF remains the supplied original menu. Category links can be shared with `?category=bakar`; see [dedicated menu notes](docs/menu-redesign.md).
 
 ## Build and verify
 
@@ -30,7 +36,7 @@ The browser suite uses installed Google Chrome on macOS when available. Otherwis
 npx playwright install chromium
 ```
 
-For a custom browser installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Tests start their own dev server unless port 5173 is already in use, in which case they reuse whatever is serving there, even if it belongs to another checkout. Set `PLAYWRIGHT_PORT` to an unused port to test this tree. Screenshots are saved under ignored `test-results/`.
+For a custom browser installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Tests own a separate dev server on port 5177 by default and fail if that port is occupied, so they cannot silently test another checkout. Override it with `PLAYWRIGHT_PORT=5187 npm run test:e2e`. Screenshots are saved under ignored `test-results/`.
 
 Format editable project files with `npm run format`.
 
@@ -46,14 +52,16 @@ Format editable project files with `npm run format`.
 | Colours, typography, shared layout                      | `src/styles.css`                   |
 | Source evidence and unresolved facts                    | `docs/content-sources.md`          |
 
-The supplied PDF prints prices without a currency and has 2023 creation metadata. The site preserves the printed values and asks visitors to check current prices with a branch. Confirm currency, current prices, and inclusions before a public launch.
+Interface/editorial translations are in `src/content/translations.ts`. Malay menu descriptions, category titles, hours and alternative text are in `src/content/menu-ms.json`. Keep that overlay in sync when updating the sourced English menu. See [bilingual interface notes](docs/bilingual-interface.md).
+
+The supplied PDF prints prices without a currency and has 2023 creation metadata. The site preserves the printed values and asks visitors to check current prices with a branch. Currency, current prices, and inclusions still need restaurant confirmation.
 
 ## Continue with Claude Code
 
 Start with [the implementation handoff](docs/CLAUDE-HANDOFF.md). `CLAUDE.md` also points to the relevant files and checks. The public repository contains the standard source code and local assets; no proprietary runtime is required.
 
-## Hosting later
+## Hosting
 
-The intended destination is Cloudflare with `ayamkremes.com`. This release has **not been deployed**, and no DNS records have been changed. It produces a static `dist/` directory with `npm run build`; a future hosting setup can serve that directory. All current routes are same-page anchors, so no server routing layer is needed.
+The current English/Bahasa Melayu website is deployed at [ayamkremes.com](https://ayamkremes.com/) through Cloudflare Workers static assets. `wrangler.jsonc` serves `dist/`, pins the owning account, and disables `workers.dev`. The `www` hostname is not configured. `npm run deploy` builds and publishes to the production domain, and requires an authenticated Wrangler session. The Indonesian table refresh, dedicated menu and Apple Design refinement were published on 10 October 2026. See [deployment and rollback notes](docs/deployment-2026-10-10.md). Vite produces `dist/index.html` and `dist/menu/index.html` as real static pages, sharing the React bundle. No server routing layer is needed.
 
 Restaurant photographs, logo, and menu remain attributed to their original sources. Public repository visibility does not grant a separate license to those assets.

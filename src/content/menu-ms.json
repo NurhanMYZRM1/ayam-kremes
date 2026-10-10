@@ -1,0 +1,172 @@
+{
+  "categories": {
+    "kremes": {
+      "name": "Kremes",
+      "description": "Pilih satu sambal: terasi, ijo atau balado."
+    },
+    "bakar": {
+      "name": "Bakar",
+      "description": "Hidangan bakar, daripada ayam madu hingga rusuk lembu."
+    },
+    "appetizer": {
+      "name": "Pembuka selera",
+      "description": "Hidangan ringan untuk membuka selera."
+    },
+    "vegetables": {
+      "name": "Sayur-sayuran",
+      "description": "Gado Gado, Terung Kremes Balado dan Kobis Kremes."
+    },
+    "sup": {
+      "name": "Sup",
+      "description": "Sup tradisional Jakarta dan sup asam jawa masam manis."
+    },
+    "drinks": {
+      "name": "Minuman",
+      "description": "Minuman menyegarkan untuk menemani hidangan anda."
+    },
+    "add-on": {
+      "name": "Tambahan",
+      "description": "Nasi, kremesan dan sedikit sambal tambahan."
+    }
+  },
+  "items": {
+    "K01": {
+      "description": "Ayam goreng dihidangkan bersama serpihan goreng rangup.",
+      "imageAlt": "Gambar Ayam Kremes untuk menu restoran"
+    },
+    "K02": {
+      "description": "Ikan keli goreng dihidangkan bersama serpihan goreng rangup.",
+      "imageAlt": "Gambar Lele Kremes untuk menu restoran"
+    },
+    "K03": {
+      "description": "Ikan bawal goreng dihidangkan bersama serpihan goreng rangup.",
+      "imageAlt": "Gambar Bawal Kremes untuk menu restoran"
+    },
+    "K04": {
+      "description": "Udang goreng dihidangkan bersama serpihan goreng rangup.",
+      "imageAlt": "Gambar Udang Kremes untuk menu restoran"
+    },
+    "K05": {
+      "description": "Sotong goreng dihidangkan bersama serpihan goreng rangup."
+    },
+    "K06": {
+      "description": "Hirisan nipis daging lembu yang dimasak perlahan-lahan dengan herba dan rempah Indonesia, dihidangkan bersama serpihan goreng rangup."
+    },
+    "K07": {
+      "description": "Rusuk lembu yang dimasak perlahan-lahan dengan herba dan rempah Indonesia, dihidangkan bersama serpihan goreng rangup."
+    },
+    "B01": {
+      "description": "Ayam bakar madu.",
+      "imageAlt": "Gambar Ayam Bakar Madu untuk menu restoran"
+    },
+    "B02": {
+      "description": "Ikan bawal bakar dengan sos rempah merah tradisional Jawa, Indonesia."
+    },
+    "B03": {
+      "description": "Sotong bakar dengan sos rempah merah tradisional Jawa, Indonesia.",
+      "imageAlt": "Gambar Cumi Bakar Bumbu Rujak untuk menu restoran"
+    },
+    "B04": {
+      "description": "Rusuk lembu bakar dengan sos hitam manis yang sedikit pedas."
+    },
+    "A01": {
+      "description": "Keropok biji belinjo Indonesia dihidangkan bersama pes cili tradisional Indonesia.",
+      "imageAlt": "Gambar Emping with Sambal untuk menu restoran"
+    },
+    "A02": {
+      "description": "Keropok kacang soya diperam dihidangkan bersama pes cili tradisional Indonesia.",
+      "imageAlt": "Gambar Keripik Tempe with Sambal untuk menu restoran"
+    },
+    "A03": {
+      "description": "Tauhu dan kacang soya diperam yang digoreng, serta telur rebus, dihidangkan bersama pes cili Indonesia."
+    },
+    "A04": {
+      "description": "Bebola daging Indonesia yang digoreng."
+    },
+    "A05": {
+      "description": "Gorengan kentang lenyek dan ayam.",
+      "imageAlt": "Gambar Perkedel Kentang Ayam untuk menu restoran"
+    },
+    "V01": {
+      "description": "Salad gaya Indonesia dengan sayur-sayuran yang dicelur, tempe dan telur rebus, dihidangkan bersama sos kacang.",
+      "imageAlt": "Gambar Gado Gado untuk menu restoran"
+    },
+    "V02": {
+      "description": "Terung dihidangkan bersama pes cili tradisional Indonesia."
+    },
+    "V03": {
+      "description": "Kubis goreng."
+    },
+    "S01": {
+      "description": "Sup tradisional Jakarta dengan kuah rebusan daging lembu, daging lembu dan sayur-sayuran.",
+      "imageAlt": "Gambar Soto Betawi Daging untuk menu restoran"
+    },
+    "S02": {
+      "description": "Sup tradisional Jakarta dengan kuah rebusan ayam, ayam dan sayur-sayuran."
+    },
+    "S03": {
+      "description": "Pelbagai sayur-sayuran dalam sup asam jawa masam manis."
+    },
+    "D01": {
+      "variants": { "Iced": "Ais", "Hot": "Panas" }
+    },
+    "D02": {
+      "variants": { "Iced": "Ais", "Hot": "Panas" }
+    },
+    "D03": {
+      "variants": { "Iced": "Ais", "Hot": "Panas" },
+      "imageAlt": "Gambar Signature Lemongrass Limeade with Daun Limau untuk menu restoran"
+    },
+    "D04": {
+      "imageAlt": "Gambar Iced Lychee Jasmine Soda untuk menu restoran"
+    },
+    "D06": {
+      "description": "Pilihan teh: teh supreme earl grey, teh hijau oriental jasmine."
+    },
+    "D09": {
+      "description": "Coke, Sprite, teh lemon ais, A&W."
+    },
+    "T01": {
+      "description": "Nasi putih yang dikukus."
+    },
+    "T02": {
+      "description": "Serpihan goreng rangup yang beraroma."
+    },
+    "T03": {
+      "description": "Pes cili merah."
+    },
+    "T04": {
+      "description": "Pes cili hijau."
+    },
+    "T05": {
+      "description": "Pes merah Minang."
+    },
+    "T06": {
+      "description": "Sos kicap hitam pedas untuk hidangan bakar."
+    },
+    "T07": {
+      "description": "Pes cili merah mentah."
+    }
+  },
+  "sambals": {
+    "T03": { "description": "Pes cili merah." },
+    "T04": { "description": "Pes cili hijau." },
+    "T05": { "description": "Pes merah Minang." },
+    "T06": { "description": "Sos kicap hitam pedas untuk hidangan bakar." },
+    "T07": { "description": "Pes cili merah mentah." }
+  },
+  "branches": {
+    "kota-damansara": { "hours": ["Setiap hari · 11 pagi–10 malam"] },
+    "kuala-terengganu": {
+      "hours": ["Sabtu–Khamis · 11 pagi–10 malam", "Jumaat · Tutup"]
+    }
+  },
+  "images": {
+    "/images/ayam-kremes-hero.webp": "Ayam goreng keemasan dengan kremes rangup dan sambal, bersama sepinggan nasi berasingan.",
+    "/images/sharing-at-the-table.webp": "Hidangan bertabur kremes keemasan dibawa ke meja yang dipenuhi makanan.",
+    "/images/sambal-selection.webp": "Empat mangkuk sambal merah, hijau dan berasaskan kicap di atas meja kayu yang disinari cahaya matahari.",
+    "/images/the-sarang-table.webp": "Pelbagai hidangan restoran dan minuman sejuk di atas meja yang disinari cahaya matahari.",
+    "/images/sambal-dip.webp": "Perkedel Kentang Ayam dicicah ke dalam sambal merah.",
+    "/images/lemongrass-limeade.webp": "Signature Lemongrass Limeade with Daun Limau."
+  }
+}

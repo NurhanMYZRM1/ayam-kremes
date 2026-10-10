@@ -8,10 +8,13 @@ import '@fontsource/fraunces/latin-500.css';
 import '@fontsource/fraunces/latin-600.css';
 import '@fontsource/fraunces/latin-500-italic.css';
 import { App } from './App';
+import { LocaleProvider } from './i18n/LocaleContext';
 import './styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <LocaleProvider>
+      <App />
+    </LocaleProvider>
   </React.StrictMode>,
 );
