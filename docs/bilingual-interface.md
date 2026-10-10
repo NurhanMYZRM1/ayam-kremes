@@ -32,4 +32,4 @@ Restaurant facts remain sourced from `src/content/restaurant.json`. The Malay ov
 
 TypeScript and production build pass. Three content tests cover asset/source integrity and Malay translation coverage. Fourteen browser checks cover the existing English journeys plus language switching, remembering a choice, shared Malay links, selected category/reading position, unchanged dish names/prices, translated drink variants, PDF/directions actions, and axe/overflow checks at 390, 768 and 1440px in both languages. Independent manual review found the Malay wording natural, with no unsupported new facts, and verified 44px language controls and keyboard navigation. A duplicated opening-hours punctuation mark was corrected.
 
-These changes remain a local preview. The production domain has not been updated for this design or its bilingual interface.
+This interface was published with the current design on 10 October 2026. See [deployment notes](deployment-2026-10-10.md).

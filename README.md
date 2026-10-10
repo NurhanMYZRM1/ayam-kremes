@@ -15,7 +15,7 @@ Open the Local URL printed by Vite, normally **http://127.0.0.1:5173/**. The ful
 
 The Indonesian table design preview is on branch `codex/indonesian-table`. Run `npm run dev -- --port 5176 --strictPort` to reproduce the review preview. Its [design notes](docs/indonesian-refresh.md) cover the Mobbin references and connected visitor journey.
 
-The latest local design refinement uses Apple’s accessibility and layout principles for this website: larger reading text, a compact category picker, keyboard-friendly previous/next browsing and a clearer branch handoff. See [the design review and upgrade notes](docs/apple-design-upgrade.md).
+The latest design refinement uses Apple’s accessibility and layout principles for this website: larger reading text, a compact category picker, keyboard-friendly previous/next browsing and a clearer branch handoff. See [the design review and upgrade notes](docs/apple-design-upgrade.md).
 
 The header's **EN / BM** controls switch between English and Bahasa Melayu. The choice is remembered locally. Share a Malay view with `?lang=ms`, including a section anchor such as `http://127.0.0.1:5176/menu/?lang=ms`. Original dish names and printed prices remain unchanged in both languages. The downloadable PDF remains the supplied original menu. Category links can be shared with `?category=bakar`; see [dedicated menu notes](docs/menu-redesign.md).
 
@@ -62,6 +62,6 @@ Start with [the implementation handoff](docs/CLAUDE-HANDOFF.md). `CLAUDE.md` als
 
 ## Hosting
 
-The baseline site is deployed at `https://ayamkremes.com` through Cloudflare Workers static assets. `wrangler.jsonc` serves `dist/`, pins the owning account, and disables `workers.dev`. The `www` hostname is not configured. `npm run deploy` builds and publishes to the production domain, and requires an authenticated Wrangler session. The Indonesian table refresh is a local review version and has not been deployed. Vite produces `dist/index.html` and `dist/menu/index.html` as real static pages, sharing the React bundle. No server routing layer is needed.
+The current English/Bahasa Melayu website is deployed at [ayamkremes.com](https://ayamkremes.com/) through Cloudflare Workers static assets. `wrangler.jsonc` serves `dist/`, pins the owning account, and disables `workers.dev`. The `www` hostname is not configured. `npm run deploy` builds and publishes to the production domain, and requires an authenticated Wrangler session. The Indonesian table refresh, dedicated menu and Apple Design refinement were published on 10 October 2026. See [deployment and rollback notes](docs/deployment-2026-10-10.md). Vite produces `dist/index.html` and `dist/menu/index.html` as real static pages, sharing the React bundle. No server routing layer is needed.
 
 Restaurant photographs, logo, and menu remain attributed to their original sources. Public repository visibility does not grant a separate license to those assets.

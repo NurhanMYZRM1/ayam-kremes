@@ -2,13 +2,13 @@
 
 First local release prepared on **9 October 2026**, Asia/Kuala_Lumpur.
 
-The baseline has since been deployed to Cloudflare Workers at `ayamkremes.com`. The **10 October 2026 Indonesian table refresh** is an isolated local review branch, `codex/indonesian-table`, described in [indonesian-refresh.md](indonesian-refresh.md). Preview that branch on port 5176. The original release notes below retain the content and architecture context.
+The current website is deployed to Cloudflare Workers at [ayamkremes.com](https://ayamkremes.com/). The **10 October 2026 Indonesian table refresh**, English/Bahasa Melayu interface, dedicated menu and Apple Design refinement are published from `codex/indonesian-table`. See [deployment and rollback notes](deployment-2026-10-10.md). Preview this checkout locally on port 5176. The original release notes below retain the content and architecture context.
 
-That local branch now also includes an English/Bahasa Melayu interface. The EN/BM switch remembers the preference and supports `?lang=ms` links. Translation files, content invariants, and bilingual checks are documented in [bilingual-interface.md](bilingual-interface.md).
+That branch also includes an English/Bahasa Melayu interface. The EN/BM switch remembers the preference and supports `?lang=ms` links. Translation files, content invariants, and bilingual checks are documented in [bilingual-interface.md](bilingual-interface.md).
 
-The local branch also includes a redesigned dedicated `/menu/` page and a compact homepage category preview. Read [menu-redesign.md](menu-redesign.md) for current page architecture, Mobbin evidence and motion decisions.
+The branch also includes a redesigned dedicated `/menu/` page and a compact homepage category preview. Read [menu-redesign.md](menu-redesign.md) for current page architecture, Mobbin evidence and motion decisions.
 
-The latest local design refinement follows the Apple Design skill’s applicable web foundations. Read [apple-design-upgrade.md](apple-design-upgrade.md) for measured findings, contrast/type tokens, category picker, continuation/focus behaviour and text-size checks.
+The latest design refinement follows the Apple Design skill’s applicable web foundations. Read [apple-design-upgrade.md](apple-design-upgrade.md) for measured findings, contrast/type tokens, category picker, continuation/focus behaviour and text-size checks.
 
 ## What exists
 
@@ -87,7 +87,7 @@ Browser screenshots are produced under `test-results/` and are not committed. Th
 
 ## Prioritised roadmap
 
-1. **Production follow-up:** resolve current menu facts, confirm branch pins, obtain final copy/assets, and add production canonical/social metadata. Cloudflare Workers hosting and the apex domain are configured; `www` remains unconfigured. `npm run deploy` builds and publishes through the pinned account in `wrangler.jsonc`, with `workers.dev` disabled. This design refresh has not been published.
+1. **Production follow-up:** resolve current menu facts, confirm branch pins, obtain final copy/assets, and add production canonical/social metadata. Cloudflare Workers hosting and the apex domain are configured; `www` remains unconfigured. `npm run deploy` builds and publishes through the pinned account in `wrangler.jsonc`, with `workers.dev` disabled. This design refresh was published on 10 October 2026; see the deployment notes for the active and previous versions.
 2. **Content reach:** review the implemented Bahasa Melayu content, prerender rendered content to static HTML for stronger search and no-JavaScript access, branch-specific pages if useful, and opt-in privacy-conscious analytics if requested.
 3. **Editorial workflow:** introduce a small CMS only when staff need frequent independent menu/branch updates; retain the current schema and source-confirmation discipline.
 4. **Confirmed services:** integrate verified delivery/reservation links before considering a custom system.

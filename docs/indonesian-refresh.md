@@ -1,6 +1,6 @@
 # Indonesian table design preview
 
-Prepared **10 October 2026**, Asia/Kuala_Lumpur, on local branch `codex/indonesian-table` from `origin/main`. The prior uncommitted menu-to-branches CTA was carried into this preview; the Claude worktree retains its original files. The production site is the previously deployed baseline.
+Prepared **10 October 2026**, Asia/Kuala_Lumpur, on local branch `codex/indonesian-table` from `origin/main`. The prior uncommitted menu-to-branches CTA was carried into this preview; the Claude worktree retains its original files. This refresh was subsequently published on 10 October 2026; see [deployment notes](deployment-2026-10-10.md).
 
 ## Preview
 
@@ -37,4 +37,4 @@ The Indonesian cues are grounded in the restaurant's actual food, dish names, sa
 - Fresh `#sambal` loads and `#branches` reloads are covered by the menu continuation test. React now restores the initial hash after mounting and loading local fonts so a direct link reaches its section.
 - Independent visual review inspected 390, 768 and 1440px: no overflow, broken images or unsupported cultural claims. It identified double anchor offsets, low-contrast focus rings on green panels, and the fresh-load hash issue. Section margins were removed so only global header clearance applies, green panels now use parchment focus outlines, and the direct-link behavior is fixed. Browser screenshots are kept in ignored `test-results/`.
 
-Remaining source limitations are in `docs/content-sources.md`: currency/current prices, holiday exceptions, exact map pins, publication rights and higher resolution originals. No production deployment was run for this preview.
+Remaining source limitations are in `docs/content-sources.md`: currency/current prices, holiday exceptions, exact map pins, publication rights and higher resolution originals. Production deployment followed the completed design reviews; see the deployment notes.
