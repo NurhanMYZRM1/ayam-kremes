@@ -8,6 +8,8 @@ That local branch now also includes an English/Bahasa Melayu interface. The EN/B
 
 The local branch also includes a redesigned dedicated `/menu/` page and a compact homepage category preview. Read [menu-redesign.md](menu-redesign.md) for current page architecture, Mobbin evidence and motion decisions.
 
+The latest local design refinement follows the Apple Design skill’s applicable web foundations. Read [apple-design-upgrade.md](apple-design-upgrade.md) for measured findings, contrast/type tokens, category picker, continuation/focus behaviour and text-size checks.
+
 ## What exists
 
 A complete English/Bahasa Melayu restaurant website using original dish names: editorial homepage, three featured dishes, kremes introduction, five verified sambals, a browsable seven-category menu containing 39 items, two branch listings, a small photo gallery, Instagram link, menu PDF, and contact/navigation footer. No payment, account, reservation, ordering, CMS, or loyalty system is implemented.
@@ -34,7 +36,7 @@ Start with `npm ci && npm run dev`, then open the printed localhost URL. Product
 | `tests/content.test.mjs`                        | Data/source/photo mapping and file-integrity checks                                |
 | `tests/browser/visitor-journeys.spec.ts`        | Keyboard, menu selection, links, responsive layout, image and accessibility checks |
 
-This is a static React app with ordinary page links and homepage fragment navigation. Vite builds two HTML entries sharing one React bundle. There is no routing library or network API at runtime. Restaurant data is bundled at build time. Rebuild after editing content. Category state is owned by `App`, initialized from `?category=`, and updated without extra history entries; featured dish links open the matching category on `/menu/`. The menu uses native buttons with `aria-pressed`, a live category/count announcement, and a bounded horizontal strip on narrow screens. Switching categories returns the first items to view underneath the sticky header/category bar.
+This is a static React app with ordinary page links and homepage fragment navigation. Vite builds two HTML entries sharing one React bundle. There is no routing library or network API at runtime. Restaurant data is bundled at build time. Rebuild after editing content. Category state is owned by `App`, initialized from `?category=`, and updated without extra history entries; featured dish links open the matching category on `/menu/`. The menu uses native buttons with `aria-pressed`, a live category/count announcement, and a labelled native category picker on compact screens. Switching categories returns the first items to view underneath the sticky header/category toolbar.
 
 ## Design decisions and Mobbin research
 
@@ -59,7 +61,7 @@ Both branches use addresses, hours and phone numbers from the [official 8 May 20
 
 ## Verification
 
-Latest dedicated-menu checks: production build and formatting pass, three content tests pass, and all fourteen browser tests pass. Home and menu layouts were checked in EN/BM at phone/tablet/desktop widths; independent review additionally inspected 320px. Direct built-site category links load successfully. See [menu-redesign.md](menu-redesign.md) for the current results.
+Latest Apple Design refinement checks: production build and formatting pass, three content tests pass, and all sixteen browser tests pass. The suite also covers 200% text sizing on both pages in EN/BM at 320px and the short desktop category rail. Home and menu layouts were checked in EN/BM at phone/tablet/desktop widths; independent review additionally inspected 320px. Direct built-site category links load successfully. See [menu-redesign.md](menu-redesign.md) for the current results.
 
 Completed checks and limitations are recorded in [verification.md](verification.md). The independent review compared all menu names, descriptions and prices against the rendered PDF and inspected phone, tablet and desktop layouts. Its two actionable browsing findings were corrected and covered by a regression test: featured Bakar selection and restoring the category start after a long menu scroll.
 

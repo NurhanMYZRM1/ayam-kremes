@@ -1,12 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Camera,
-  Menu,
-  X,
-  MapPin,
-} from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Menu, X, MapPin } from 'lucide-react';
 import restaurantData from './content/restaurant.json';
 import { homeImages } from './content/home';
 import { telephoneUrl } from './lib/links';
@@ -495,7 +488,7 @@ export function App() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Camera size={18} aria-hidden="true" /> @ayamkremes_my{' '}
+                  <span>@ayamkremes_my</span>
                   <ArrowUpRight size={17} aria-hidden="true" />
                 </a>
               </div>

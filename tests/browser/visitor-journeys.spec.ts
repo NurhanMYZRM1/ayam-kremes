@@ -277,11 +277,15 @@ test('featured dishes deep-link to their category and category changes reset bel
   );
   await expect(page.locator('#menu-category-title')).toHaveText('Bakar');
   await expect(page.locator('#menu-category-title')).toBeInViewport();
-  await page.getByRole('button', { name: 'Kremes', exact: true }).click();
+  await page
+    .getByRole('combobox', { name: 'Menu category' })
+    .selectOption('kremes');
   await page.evaluate(() =>
     window.scrollBy({ top: 1200, behavior: 'instant' }),
   );
-  await page.getByRole('button', { name: 'Add On', exact: true }).click();
+  await page
+    .getByRole('combobox', { name: 'Menu category' })
+    .selectOption('add-on');
   await expect(page.locator('#menu-category-title')).toHaveText('Add On');
   expect(new URL(page.url()).searchParams.get('category')).toBe('add-on');
   expect(new URL(page.url()).hash).toBe('#menu-category-content');
@@ -290,7 +294,7 @@ test('featured dishes deep-link to their category and category changes reset bel
       .querySelector('#menu-category-title')!
       .getBoundingClientRect().top,
     navBottom: document
-      .querySelector('[role="group"][aria-label="Browse menu categories"]')!
+      .querySelector('.menu-page-mobile-tools')!
       .getBoundingClientRect().bottom,
   }));
   expect(positions.heading).toBeGreaterThanOrEqual(positions.navBottom - 1);
@@ -327,7 +331,15 @@ for (const width of [390, 768, 1440]) {
         viewport: innerWidth,
       }));
       expect(dimensions.body).toBeLessThanOrEqual(dimensions.viewport);
-      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.evaluate(() =>
+        window.scrollTo({ top: 0, behavior: 'instant' }),
+      );
+      if (name === 'menu' && width === 1440) {
+        await page.screenshot({
+          path: testInfo.outputPath('menu-desktop-viewport.png'),
+          animations: 'disabled',
+        });
+      }
       await page.screenshot({
         path: testInfo.outputPath(`${name}-${width}.png`),
         fullPage: true,

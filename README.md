@@ -15,6 +15,8 @@ Open the Local URL printed by Vite, normally **http://127.0.0.1:5173/**. The ful
 
 The Indonesian table design preview is on branch `codex/indonesian-table`. Run `npm run dev -- --port 5176 --strictPort` to reproduce the review preview. Its [design notes](docs/indonesian-refresh.md) cover the Mobbin references and connected visitor journey.
 
+The latest local design refinement uses Apple’s accessibility and layout principles for this website: larger reading text, a compact category picker, keyboard-friendly previous/next browsing and a clearer branch handoff. See [the design review and upgrade notes](docs/apple-design-upgrade.md).
+
 The header's **EN / BM** controls switch between English and Bahasa Melayu. The choice is remembered locally. Share a Malay view with `?lang=ms`, including a section anchor such as `http://127.0.0.1:5176/menu/?lang=ms`. Original dish names and printed prices remain unchanged in both languages. The downloadable PDF remains the supplied original menu. Category links can be shared with `?category=bakar`; see [dedicated menu notes](docs/menu-redesign.md).
 
 ## Build and verify

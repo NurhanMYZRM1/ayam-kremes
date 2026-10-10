@@ -4,10 +4,11 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  Check,
+  ChevronDown,
+  MapPin,
 } from 'lucide-react';
-import { homeImages } from '../content/home';
 import { useLocale } from '../i18n/LocaleContext';
-import { localizeImageAlt } from '../i18n/content';
 import { formatMessage } from '../i18n/format';
 import type { MenuCategory, MenuItem } from '../types';
 import './menu-page.css';
@@ -63,26 +64,17 @@ export function MenuPage({
   const contentRef = useRef<HTMLDivElement>(null);
   const categoryNavRef = useRef<HTMLDivElement>(null);
   const categoryStartRequested = useRef(false);
+  const focusHeadingRequested = useRef(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const selected =
     categories.find((category) => category.id === selectedId) ?? categories[0];
   const photographedItems = selected?.items.filter((item) => item.image) ?? [];
   const textItems = selected?.items.filter((item) => !item.image) ?? [];
-  const tableImage = homeImages.gallery[0];
-
-  function keepSelectedCategoryVisible() {
-    const nav = categoryNavRef.current;
-    const button = nav?.querySelector<HTMLButtonElement>(
-      '[aria-pressed="true"]',
-    );
-    if (!nav || !button || nav.scrollWidth <= nav.clientWidth) return;
-    const navBounds = nav.getBoundingClientRect();
-    const buttonBounds = button.getBoundingClientRect();
-    if (buttonBounds.left < navBounds.left + 6) {
-      nav.scrollLeft += buttonBounds.left - navBounds.left - 6;
-    } else if (buttonBounds.right > navBounds.right - 6) {
-      nav.scrollLeft += buttonBounds.right - navBounds.right + 6;
-    }
-  }
+  const selectedIndex = categories.findIndex(
+    (category) => category.id === selected?.id,
+  );
+  const previous = categories[selectedIndex - 1];
+  const next = categories[selectedIndex + 1];
 
   function showCategoryStart() {
     const content = contentRef.current;
@@ -92,7 +84,11 @@ export function MenuPage({
       document.querySelector('.site-header')?.getBoundingClientRect().height ??
       88;
     const horizontalNav = window.matchMedia('(max-width: 900px)').matches;
-    const navHeight = horizontalNav ? nav.getBoundingClientRect().height : 0;
+    const navHeight = horizontalNav
+      ? (document
+          .querySelector('.menu-page-mobile-tools')
+          ?.getBoundingClientRect().height ?? 0)
+      : 0;
     const heading = content.querySelector('#menu-category-title') ?? content;
     const top =
       window.scrollY +
@@ -104,25 +100,52 @@ export function MenuPage({
   }
 
   useLayoutEffect(() => {
-    keepSelectedCategoryVisible();
     if (categoryStartRequested.current) {
       showCategoryStart();
       categoryStartRequested.current = false;
+      if (focusHeadingRequested.current) {
+        document
+          .getElementById('menu-category-title')
+          ?.focus({ preventScroll: true });
+        focusHeadingRequested.current = false;
+      }
     }
   }, [selectedId, locale]);
 
-  function selectCategory(id: string) {
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const toolbar = section?.querySelector<HTMLElement>(
+      '.menu-page-mobile-tools',
+    );
+    if (!section || !toolbar) return;
+    const measure = () =>
+      section.style.setProperty(
+        '--menu-tools-height',
+        `${toolbar.getBoundingClientRect().height}px`,
+      );
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(toolbar);
+    return () => observer.disconnect();
+  }, []);
+
+  function selectCategory(id: string, focusHeading = false) {
     if (id === selectedId) {
-      keepSelectedCategoryVisible();
       showCategoryStart();
       return;
     }
+    focusHeadingRequested.current = focusHeading;
     categoryStartRequested.current = true;
     onCategoryChange(id);
   }
 
   return (
-    <section id="menu" className="menu-page" aria-labelledby="menu-title">
+    <section
+      ref={sectionRef}
+      id="menu"
+      className="menu-page"
+      aria-labelledby="menu-title"
+    >
       <div className="container">
         <a className="menu-page-back" href={homeHref}>
           <ArrowLeft size={16} aria-hidden="true" /> {t.backHome}
@@ -133,27 +156,12 @@ export function MenuPage({
             <p className="eyebrow">{t.menuEyebrow}</p>
             <h1 id="menu-title">{t.menuTitle}</h1>
             <p className="menu-page-introduction">{t.menuIntroduction}</p>
-            <a className="text-link menu-page-download" href={menuPdf} download>
-              {t.downloadMenu}{' '}
-              <span className="download-size">{t.pdfSize}</span>
-              <ArrowDownToLine size={17} aria-hidden="true" />
-            </a>
           </div>
-          <figure className="menu-page-table">
-            <img
-              src={tableImage.path}
-              alt={localizeImageAlt(tableImage.path, tableImage.alt, locale)}
-              width="640"
-              height="427"
-              sizes="(max-width: 600px) calc(100vw - 44px), (max-width: 900px) 40vw, 440px"
-              loading="eager"
-              decoding="async"
-            />
-            <figcaption>{t.menuPhotoCaption}</figcaption>
-          </figure>
+          <a className="text-link menu-page-download" href={menuPdf} download>
+            {t.downloadMenu} <span className="download-size">{t.pdfSize}</span>
+            <ArrowDownToLine size={17} aria-hidden="true" />
+          </a>
         </div>
-
-        <div className="woven-rule menu-page-seam" aria-hidden="true" />
 
         <div className="menu-page-browser">
           <div
@@ -174,12 +182,42 @@ export function MenuPage({
                 aria-controls="menu-category-content"
                 onClick={() => selectCategory(category.id)}
               >
-                <span>{category.name}</span>
+                <Check
+                  className="menu-page-selection-check"
+                  size={16}
+                  aria-hidden="true"
+                />
+                <span className="menu-page-category-name">{category.name}</span>
                 <span className="menu-page-category-count" aria-hidden="true">
-                  {String(category.items.length).padStart(2, '0')}
+                  {category.items.length}
                 </span>
               </button>
             ))}
+          </div>
+          <div className="menu-page-mobile-tools">
+            <div className="menu-page-picker">
+              <label htmlFor="menu-category-picker">
+                {t.menuCategoryLabel}
+              </label>
+              <span className="menu-page-picker-field">
+                <select
+                  id="menu-category-picker"
+                  value={selected?.id}
+                  onChange={(event) => selectCategory(event.target.value)}
+                >
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={18} aria-hidden="true" />
+              </span>
+            </div>
+            <a className="menu-page-quick-branch" href={branchesHref}>
+              <MapPin size={18} aria-hidden="true" />
+              {t.findBranch}
+            </a>
           </div>
 
           {selected && (
@@ -191,7 +229,9 @@ export function MenuPage({
             >
               <div className="menu-page-category-heading">
                 <div>
-                  <h2 id="menu-category-title">{selected.name}</h2>
+                  <h2 id="menu-category-title" tabIndex={-1}>
+                    {selected.name}
+                  </h2>
                   {selected.description && <p>{selected.description}</p>}
                 </div>
                 <span className="menu-page-choice-count" aria-live="polite">
@@ -202,7 +242,10 @@ export function MenuPage({
               </div>
 
               {photographedItems.length > 0 && (
-                <div className="menu-page-photo-grid">
+                <div
+                  className="menu-page-photo-grid"
+                  data-count={photographedItems.length}
+                >
                   {photographedItems.map((item) => (
                     <article
                       className="menu-page-photo-item menu-photo-item"
@@ -240,12 +283,48 @@ export function MenuPage({
                 </div>
               )}
 
+              <nav className="menu-page-explore" aria-label={t.keepExploring}>
+                {previous && (
+                  <button
+                    key="previous"
+                    type="button"
+                    onClick={() => selectCategory(previous.id, true)}
+                  >
+                    <ArrowLeft size={18} aria-hidden="true" />
+                    <span>
+                      {formatMessage(t.previousCategory, {
+                        name: previous.name,
+                      })}
+                    </span>
+                  </button>
+                )}
+                {next && (
+                  <button
+                    key="next"
+                    type="button"
+                    className="menu-page-next"
+                    onClick={() => selectCategory(next.id, true)}
+                  >
+                    <span>
+                      {formatMessage(t.nextCategory, { name: next.name })}
+                    </span>
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </button>
+                )}
+              </nav>
+
               <div className="menu-bottom-note menu-page-bottom-note">
-                <p>{t.priceNote}</p>
-                <div className="menu-page-bottom-actions">
+                <div className="menu-page-visit">
+                  <div>
+                    <h2>{t.menuVisitTitle}</h2>
+                    <p>{t.menuVisitDescription}</p>
+                  </div>
                   <a className="button button-primary" href={branchesHref}>
                     {t.findBranch} <ArrowRight size={19} aria-hidden="true" />
                   </a>
+                </div>
+                <div className="menu-page-source-note">
+                  <p>{t.priceNote}</p>
                   <a
                     href={menuPdf}
                     target="_blank"

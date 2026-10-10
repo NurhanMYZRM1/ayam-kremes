@@ -5,7 +5,7 @@
   --forest: #244638;
   --orange: #a53e28;
   --ink: #20382d;
-  --muted: #64675b;
+  --muted: #586256;
   --line: #d9d2c2;
   --brown: #795742;
   --serif: 'Fraunces', Georgia, serif;
@@ -76,7 +76,7 @@ p {
   padding-block: 90px;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.7px;
@@ -107,7 +107,7 @@ p {
   min-height: 44px;
   padding-block: 10px;
   border-bottom: 1px solid currentColor;
-  font-size: 13px;
+  font-size: 0.875rem;
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -154,10 +154,6 @@ p {
   color: var(--brown);
   font: 300 30px var(--serif);
 }
-.menu-preview-number {
-  color: var(--orange);
-  font-size: 11px;
-}
 .menu-preview-label {
   font: 500 25px/1.25 var(--serif);
   flex: 1;
@@ -189,7 +185,7 @@ p {
   padding: 15px 22px;
   border: 1px solid transparent;
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 0.9375rem;
   font-weight: 600;
   transition:
     background-color 180ms,
@@ -285,7 +281,7 @@ p {
   display: flex;
   align-items: center;
   gap: 35px;
-  font-size: 13px;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .main-navigation a {
@@ -345,7 +341,7 @@ p {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 22px;
-  font-size: 9px;
+  font-size: 0.75rem;
   letter-spacing: 1.5px;
   color: var(--brown);
 }
@@ -381,7 +377,7 @@ p {
   align-items: center;
   gap: 10px;
   min-height: 48px;
-  font-size: 13px;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .hero-secondary:hover {
@@ -422,10 +418,10 @@ p {
   padding: 17px 21px;
   background: var(--forest);
   color: var(--cream);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .photo-caption span:last-child {
-  font-size: 9px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #d5ddce;
@@ -514,13 +510,13 @@ p {
   letter-spacing: -0.5px;
 }
 .dish-price {
-  font-size: 14px;
+  font-size: 0.9375rem;
   color: var(--brown);
 }
 .featured-dish > p {
   margin-top: 9px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 0.875rem;
   line-height: 1.7;
 }
 .section-handoff {
@@ -593,7 +589,7 @@ p {
   color: var(--brown);
 }
 .image-caption {
-  font-size: 11px;
+  font-size: 0.75rem;
   line-height: 1.7;
 }
 .crunch-copy {
@@ -607,7 +603,7 @@ p {
 .crunch-copy .eyebrow {
   color: #c6d2bc;
   margin-bottom: 22px;
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .crunch-copy h2 {
   font: 500 clamp(40px, 4vw, 59px)/1.09 var(--serif);
@@ -618,7 +614,7 @@ p {
   color: #efb995;
 }
 .crunch-copy p:not(.eyebrow) {
-  font-size: 14px;
+  font-size: 0.9375rem;
   line-height: 1.85;
   color: #d8dfd0;
   margin-top: 20px;
@@ -642,7 +638,7 @@ p {
 }
 .sambal-intro {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 0.9375rem;
   line-height: 1.8;
   margin-top: 19px;
 }
@@ -666,7 +662,7 @@ p {
 }
 .sambal-item p {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.6;
 }
 .sambal-photo-wrap {
@@ -703,9 +699,20 @@ p {
 }
 .social-note {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 0.875rem;
   line-height: 1.75;
   margin-top: 24px;
+}
+.social-section .text-link {
+  max-width: 100%;
+  flex-shrink: 1;
+}
+.social-section .text-link span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.social-section .text-link svg {
+  flex-shrink: 0;
 }
 .site-footer {
   background: var(--forest);
@@ -738,7 +745,7 @@ p {
 }
 .footer-top > div > p {
   color: #c7d2c0;
-  font-size: 13px;
+  font-size: 0.875rem;
   line-height: 1.8;
   margin-top: 22px;
 }
@@ -753,7 +760,7 @@ p {
   display: flex;
   align-items: center;
   gap: 23px;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .footer-top a:hover {
   color: #efb995;
@@ -768,12 +775,12 @@ p {
   flex-direction: column;
   gap: 5px;
   min-height: 44px;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.5;
 }
 .footer-contacts a span:last-child {
   color: #c7d2c0;
-  font-size: 13px;
+  font-size: 0.875rem;
 }
 .footer-invitation {
   font: 500 32px/1.16 var(--serif);
@@ -794,13 +801,13 @@ p {
   justify-content: space-between;
   gap: 20px;
   color: #c7d2c0;
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 .footer-bottom a {
   padding: 8px;
 }
 .download-size {
-  font-size: 10px;
+  font-size: 0.75rem;
   font-weight: 400;
   color: var(--muted);
   white-space: nowrap;
@@ -826,7 +833,7 @@ p {
     gap: 14px;
   }
   .hero-description {
-    font-size: 14px;
+    font-size: 0.9375rem;
   }
   .main-navigation {
     gap: 22px;
@@ -844,7 +851,7 @@ p {
     gap: 12px;
   }
   .meal-journey small {
-    font-size: 10px;
+    font-size: 0.75rem;
   }
   .crunch-copy {
     padding: 35px;
@@ -888,7 +895,7 @@ p {
     font-size: 22px;
   }
   .brand-signature {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .brand-logo {
     width: 47px;
@@ -937,7 +944,7 @@ p {
     padding: 0;
   }
   .hero-copy .eyebrow {
-    font-size: 8px;
+    font-size: 0.75rem;
     gap: 8px;
     letter-spacing: 1.2px;
     margin-bottom: 20px;
@@ -947,7 +954,7 @@ p {
     letter-spacing: -2.2px;
   }
   .hero-description {
-    font-size: 14px;
+    font-size: 0.9375rem;
     margin-top: 21px;
   }
   .hero-actions {
@@ -964,10 +971,10 @@ p {
   }
   .photo-caption {
     padding: 13px 15px;
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .photo-caption span:last-child {
-    font-size: 8px;
+    font-size: 0.75rem;
     letter-spacing: 0.8px;
   }
   .meal-journey {
@@ -988,7 +995,7 @@ p {
     border-top: 0;
   }
   .meal-journey small {
-    font-size: 10px;
+    font-size: 0.75rem;
     margin-top: 3px;
   }
   .section-heading {
@@ -1019,7 +1026,7 @@ p {
     font-size: 26px;
   }
   .featured-dish > p {
-    font-size: 13px;
+    font-size: 0.875rem;
   }
   .section-handoff {
     flex-direction: column;
@@ -1032,7 +1039,7 @@ p {
     font-size: 20px;
   }
   .section-handoff p span {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   .sarang-story {
     padding-bottom: 43px;
@@ -1057,12 +1064,12 @@ p {
     font-size: 46px;
   }
   .crunch-copy .eyebrow {
-    font-size: 8px;
+    font-size: 0.75rem;
     letter-spacing: 1.25px;
     margin-bottom: 20px;
   }
   .crunch-copy p:not(.eyebrow) {
-    font-size: 14px;
+    font-size: 0.9375rem;
   }
   .sambal-section {
     grid-template-columns: 1fr;
@@ -1070,7 +1077,7 @@ p {
     gap: 30px;
   }
   .sambal-intro {
-    font-size: 13px;
+    font-size: 0.875rem;
     margin-top: 17px;
   }
   .sambal-item {
@@ -1082,7 +1089,7 @@ p {
     font-size: 22px;
   }
   .sambal-item p {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   .sambal-photo {
     height: 330px;
@@ -1105,7 +1112,7 @@ p {
     display: none;
   }
   .social-note {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   .site-footer {
     padding-top: 26px;
@@ -1135,13 +1142,31 @@ p {
     gap: 34px;
   }
   .footer-bottom {
-    font-size: 9px;
+    font-size: 0.75rem;
     flex-wrap: wrap;
     gap: 12px;
   }
   .footer-bottom span:nth-child(2) {
     display: none;
   }
+}
+
+@media (max-width: 600px) {
+  .footer-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .footer-contacts {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+.footer-top nav a {
+  min-height: 44px;
+}
+.footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1178,7 +1203,7 @@ p {
   padding: 8px;
   background: transparent;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 .language-switch button[aria-pressed='true'] {
@@ -1260,5 +1285,44 @@ p {
   }
   .site-header .brand-name {
     font-size: 20px;
+  }
+}
+
+/* Stronger separation when requested; every background is already opaque. */
+@media (prefers-contrast: more) {
+  :root {
+    --muted: var(--ink);
+    --line: #8a8f7d;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-description,
+  .featured-dish > p,
+  .crunch-copy p:not(.eyebrow),
+  .sambal-intro,
+  .sambal-item p,
+  .menu-preview-intro,
+  .branch-detail,
+  .social-note {
+    font-size: 1.0625rem;
+  }
+  .main-navigation {
+    font-size: 1rem;
+  }
+  .menu-preview-label small {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .sambal-item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .branch-detail address,
+  .branch-detail p {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 }

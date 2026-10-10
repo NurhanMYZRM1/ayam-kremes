@@ -78,8 +78,8 @@ test('a shared Malay link supports mobile navigation, drink variants, PDF and di
     page.getByRole('button', { name: 'Baca dalam Bahasa Melayu' }),
   ).toHaveAttribute('aria-pressed', 'true');
   await expect(
-    page.getByRole('button', { name: 'Minuman', exact: true }),
-  ).toHaveAttribute('aria-pressed', 'true');
+    page.getByRole('combobox', { name: 'Kategori menu', exact: true }),
+  ).toHaveValue('drinks');
   const limeade = page.locator('.menu-photo-item').filter({
     has: page.getByRole('heading', {
       name: 'Signature Lemongrass Limeade with Daun Limau',

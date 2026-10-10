@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Utensils } from 'lucide-react';
 import type { MenuCategory } from '../types';
 import { useLocale } from '../i18n/LocaleContext';
 import { siteHref } from '../lib/navigation';
@@ -21,11 +21,11 @@ export function MenuPreview({ categories }: { categories: MenuCategory[] }) {
             <p className="menu-preview-intro">{t.menuPreviewIntro}</p>
           </div>
           <a className="button button-primary" href={siteHref('menu', locale)}>
-            {t.seeFullMenu} <ArrowUpRight size={18} aria-hidden="true" />
+            {t.seeFullMenu} <ArrowRight size={18} aria-hidden="true" />
           </a>
         </div>
         <div className="menu-preview-categories">
-          {categories.map((category, index) => {
+          {categories.map((category) => {
             const image = category.items.find((item) => item.image);
             return (
               <a
@@ -36,9 +36,6 @@ export function MenuPreview({ categories }: { categories: MenuCategory[] }) {
                   hash: 'menu-category-content',
                 })}
               >
-                <span className="menu-preview-number" aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
                 {image?.image ? (
                   <img
                     src={image.image}
@@ -50,7 +47,7 @@ export function MenuPreview({ categories }: { categories: MenuCategory[] }) {
                   />
                 ) : (
                   <span className="menu-preview-ornament" aria-hidden="true">
-                    +
+                    <Utensils size={24} strokeWidth={1.5} />
                   </span>
                 )}
                 <span className="menu-preview-label">
@@ -60,7 +57,7 @@ export function MenuPreview({ categories }: { categories: MenuCategory[] }) {
                     {category.items.length === 1 ? t.oneDish : t.choices}
                   </small>
                 </span>
-                <ArrowUpRight size={19} aria-hidden="true" />
+                <ArrowRight size={19} aria-hidden="true" />
               </a>
             );
           })}

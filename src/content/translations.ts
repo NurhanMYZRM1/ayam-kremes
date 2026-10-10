@@ -8,6 +8,12 @@ export const messages: Record<Locale, Messages> = {
     backHome: 'Back to Sarang',
     menuPhotoCaption: 'A taste of the Sarang table.',
     menuRailLabel: 'On the menu',
+    menuCategoryLabel: 'Menu category',
+    keepExploring: 'Keep exploring',
+    previousCategory: 'Previous: {name}',
+    nextCategory: 'Next: {name}',
+    menuVisitTitle: 'Found a favourite?',
+    menuVisitDescription: 'Find a branch and come to the Sarang table.',
     menuPreviewEyebrow: 'Find your flavour',
     menuPreviewTitle: 'Something for every appetite.',
     menuPreviewIntro:
@@ -79,7 +85,7 @@ export const messages: Record<Locale, Messages> = {
     menuEyebrow: 'The menu',
     menuTitle: 'Choose your next plate.',
     menuIntroduction:
-      'Start with golden kremes, explore the bakar dishes, or settle in with a bowl of soup. There’s a place for every appetite at the table.',
+      'Explore kremes, bakar, soup and more. Choose a category, then find a branch.',
     downloadMenu: 'Download the menu',
     pdfSize: 'PDF · 25 MB',
     browseCategories: 'Browse menu categories',
@@ -108,6 +114,12 @@ export const messages: Record<Locale, Messages> = {
     backHome: 'Kembali ke Sarang',
     menuPhotoCaption: 'Antara hidangan di meja Sarang.',
     menuRailLabel: 'Pilihan menu',
+    menuCategoryLabel: 'Kategori menu',
+    keepExploring: 'Terokai lagi',
+    previousCategory: 'Sebelumnya: {name}',
+    nextCategory: 'Seterusnya: {name}',
+    menuVisitTitle: 'Sudah jumpa kegemaran?',
+    menuVisitDescription: 'Cari cawangan dan jom makan di Sarang.',
     menuPreviewEyebrow: 'Ikut selera anda',
     menuPreviewTitle: 'Pilihan untuk setiap selera.',
     menuPreviewIntro:
@@ -179,7 +191,7 @@ export const messages: Record<Locale, Messages> = {
     menuEyebrow: 'Menu',
     menuTitle: 'Pilih hidangan anda.',
     menuIntroduction:
-      'Mulakan dengan kremes keemasan, cuba hidangan bakar, atau nikmati semangkuk sup. Ada pilihan untuk setiap selera di meja kami.',
+      'Terokai kremes, bakar, sup dan banyak lagi. Pilih kategori, kemudian cari cawangan.',
     downloadMenu: 'Muat turun menu',
     pdfSize: 'PDF · 25 MB',
     browseCategories: 'Terokai kategori menu',

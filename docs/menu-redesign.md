@@ -2,6 +2,8 @@
 
 Local revision on **10 October 2026**, branch `codex/indonesian-table`. Preview: `http://127.0.0.1:5176/menu/`; Malay: `http://127.0.0.1:5176/menu/?lang=ms`.
 
+The following describes the first dedicated-menu revision. The newer [Apple Design refinement](apple-design-upgrade.md) replaces compact horizontal chips with a labelled category picker, adds previous/next browsing, increases reading sizes, and removes the repeated table intro photo.
+
 ## Page flow and implementation
 
 The homepage now has a compact category preview instead of the entire interactive menu. Hero, featured dish, story, preview and footer links open the dedicated menu page. Featured dishes and category links include the stable category ID and target the dish content, for example `/menu/?category=bakar#menu-category-content`.
