@@ -567,6 +567,22 @@ export function App() {
             <span>Kremes. Bakar. Sambal.</span>
             <a href={isMenuPage ? '#menu' : '#home'}>{t.backToTop}</a>
           </div>
+          <div className="footer-credit">
+            <a
+              href="https://rasor.my"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>{t.poweredBy}</span>
+              <img
+                src="/images/rasor-wordmark-on-dark.png"
+                alt="Rasor"
+                width={83}
+                height={24}
+                loading="lazy"
+              />
+            </a>
+          </div>
         </div>
       </footer>
     </>

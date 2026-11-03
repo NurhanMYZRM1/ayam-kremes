@@ -72,6 +72,7 @@ export type MessageKey =
   | 'socialNote'
   | 'footerGreeting'
   | 'footerNote'
+  | 'poweredBy'
   | 'footerInvitationFirst'
   | 'footerInvitationSecond'
   | 'menuEyebrow'
