@@ -806,6 +806,33 @@ p {
 .footer-bottom a {
   padding: 8px;
 }
+.footer-credit {
+  border-top: 1px solid #506955;
+  margin-top: 20px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.footer-credit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding-inline: 8px;
+  color: #c7d2c0;
+  font-size: 0.75rem;
+}
+.footer-credit img {
+  width: 83px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 150ms;
+}
+.footer-credit a:hover img,
+.footer-credit a:focus-visible img {
+  opacity: 1;
+}
 .download-size {
   font-size: 0.75rem;
   font-weight: 400;
